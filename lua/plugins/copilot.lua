@@ -13,4 +13,4 @@ return {
         enabled = true,
         opts = {}
     },
-}/ 
+} 
