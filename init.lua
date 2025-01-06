@@ -14,7 +14,6 @@ vim.g.mapleader = " "
 vim.opt.termguicolors = true
 vim.opt.guicursor = ""
 
-require("lazy").setup("extras", {})
 require("lazy").setup("plugins", {
     rocks = { enabled = false },
     dev = {
