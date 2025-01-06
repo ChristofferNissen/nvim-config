@@ -142,7 +142,7 @@ return {
             })
 
             require('mason-lspconfig').setup({
-                ensure_installed = { 'lua_ls', 'gopls', 'terraformls' },
+                ensure_installed = { 'lua_ls', 'gopls', 'terraformls', 'yamlls' },
                 handlers = {
                     function(server_name)
                         lspconfig[server_name].setup({})
@@ -157,7 +157,8 @@ return {
                                 yaml = {
                                     format = {
                                         enable = true,
-                                    }
+                                    },
+                                    schemas = { kubernetes = '*.yaml' },
                                 },
                             },
                         })
