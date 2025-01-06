@@ -10,7 +10,10 @@ return {
             -- other
             nls.builtins.formatting.stylua,
             nls.builtins.formatting.shfmt,
-            nls.builtins.formatting.black
+            nls.builtins.formatting.black,
+            -- yaml
+            nls.builtins.diagnostics.yamllint,
+            nls.builtins.formatting.yamlfmt,
         })
         return opts
     end
