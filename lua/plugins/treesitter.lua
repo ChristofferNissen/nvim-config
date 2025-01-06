@@ -4,9 +4,9 @@ return {
     main = "nvim-treesitter.configs",
     dev = true,
     opts = {
-        -- autotag = {
-        --     enable = true
-        -- },
+        autotag = {
+            enable = true
+        },
         ensure_installed = {},
         highlight = {
             -- `false` will disable the whole extension

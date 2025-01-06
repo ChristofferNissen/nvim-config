@@ -25,6 +25,15 @@ return {
         end,
     },
     {
+        "cappyzawa/telescope-terraform.nvim",
+        ft = { "terraform", "hcl" },
+        config = function()
+            LazyVim.on_load("telescope.nvim", function()
+                require("telescope").load_extension("terraform")
+            end)
+        end,
+    },
+    {
         "nvimtools/none-ls.nvim",
         optional = true,
         opts = function(_, opts)
