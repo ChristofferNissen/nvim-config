@@ -124,6 +124,8 @@ return {
             })
 
             local lspconfig = require("lspconfig")
+            
+            lspconfig.gleam.setup({})
 
             lspconfig.nushell.setup({
                 command = { "nu", "--lsp" },
