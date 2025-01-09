@@ -7,7 +7,7 @@ return {
         autotag = {
             enable = true
         },
-        ensure_installed = { "terraform", "hcl", "gleam" },
+        ensure_installed = { "terraform", "hcl", "gleam", "nix", "zig", "go", "gomod", "gowork", "gosum" },
         highlight = {
             -- `false` will disable the whole extension
             enable = true,
