@@ -6,7 +6,5 @@ return {
         { "<leader>R",  mode = "n", function() require('substitute').eol() end,      desc = "substitute w/ eol" },
         { "<leader>r",  mode = "x", function() require('substitute').visual() end,   desc = "substitute w/ visual" },
     },
-    opts = {
-
-    },
+    opts = {},
 }
