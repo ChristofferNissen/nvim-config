@@ -18,7 +18,6 @@ return {
             "gowork",
             "gosum",
             "gotmpl",
-            "gowork",
             "helm",
             "yaml",
             "c",
