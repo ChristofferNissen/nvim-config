@@ -47,7 +47,7 @@ return {
 	{
 		"MeanderingProgrammer/markdown.nvim",
 		dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" },
-		opts = {}
+		opts = {},
 		ft = { "markdown" },
 		keys = {
 			{
