@@ -3,12 +3,16 @@ return {
         "nvim-telescope/telescope.nvim",
         lazy = false,
         dependencies = {
-            'nvim-lua/plenary.nvim',
+            "nvim-lua/plenary.nvim",
             {
-                'nvim-telescope/telescope-file-browser.nvim',
+                "nvim-telescope/telescope-file-browser.nvim",
                 event = "VeryLazy",
-                dependencies = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim', 'nvim-tree/nvim-web-devicons' }
-            }
+                dependencies = {
+                    "nvim-telescope/telescope.nvim",
+                    "nvim-lua/plenary.nvim",
+                    "nvim-tree/nvim-web-devicons",
+                },
+            },
         },
         -- stylua: ignore
         keys = {
@@ -66,12 +70,11 @@ return {
                         respect_gitignore = false,
                         hijack_netrw = true,
                         hidden = true,
-                    }
-                }
+                    },
+                },
             }
-            require('telescope').setup(opts)
-            require("telescope").load_extension "file_browser"
-        end
-
-    }
+            require("telescope").setup(opts)
+            require("telescope").load_extension("file_browser")
+        end,
+    },
 }

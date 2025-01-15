@@ -19,6 +19,6 @@ require("lazy").setup("plugins", {
     dev = {
         path = "~/.local/share/nvim/nix",
         fallback = false,
-    }
+    },
 })
 require("ChristofferNissen")
