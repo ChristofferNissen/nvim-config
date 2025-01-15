@@ -1,13 +1,32 @@
 return {
-    'nvim-treesitter/nvim-treesitter',
+    "nvim-treesitter/nvim-treesitter",
     event = { "BufReadPost", "BufNewFile" },
     main = "nvim-treesitter.configs",
     dev = true,
     opts = {
         autotag = {
-            enable = true
+            enable = true,
         },
-        ensure_installed = { "terraform", "hcl", "gleam", "nix", "zig", "go", "gomod", "gowork", "gosum" },
+        ensure_installed = {
+            "terraform",
+            "hcl",
+            "gleam",
+            "nix",
+            "zig",
+            "go",
+            "gomod",
+            "gowork",
+            "gosum",
+            "gotmpl",
+            "gowork",
+            "helm",
+            "yaml",
+            "c",
+            "c_sharp",
+            "dockerfile",
+            "dot",
+            "hyprlang",
+        },
         highlight = {
             -- `false` will disable the whole extension
             enable = true,
@@ -22,6 +41,5 @@ return {
                 node_decremental = "<BS>",
             },
         },
-    }
-
+    },
 }
