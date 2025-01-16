@@ -64,6 +64,7 @@ return {
 					{ name = "copilot" },
 					{ name = "path" },
 					{ name = "luasnip" },
+					{ name = "render-markdown" },
 				},
 			})
 		end,
