@@ -220,7 +220,7 @@ return {
 							client.server_capabilities.semanticTokensProvider = nil
 						end
 						lsp.on_attach(function(client, _)
-							if not client.server_capabilities.semanticTokensProvider then
+							if client.name == "gopls" and not client.server_capabilities.semanticTokensProvider then
 								local semantic = client.config.capabilities.textDocument.semanticTokens
 								client.server_capabilities.semanticTokensProvider = {
 									full = true,
