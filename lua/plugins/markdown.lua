@@ -65,7 +65,7 @@ return {
 		keys = {
 			{
 				"<leader>tm",
-				"<cmd>RenderMarkdown<cr>",
+				"<cmd>RenderMarkdown toggle<cr>",
 				desc = "Toggle Markdown preview",
 			},
 		},
