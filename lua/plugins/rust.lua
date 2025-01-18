@@ -1,10 +1,35 @@
 return {
     {
-        'mrcjkb/rustaceanvim',
+        "Saecki/crates.nvim",
+        event = { "BufRead Cargo.toml" },
+        opts = {
+            completion = {
+                crates = {
+                    enabled = true,
+                },
+            },
+            lsp = {
+                enabled = true,
+                actions = true,
+                completion = true,
+                hover = true,
+            },
+        },
+    },
+    {
+        "mrcjkb/rustaceanvim",
         version = "^5",
         event = { "BufReadPost *.rs" },
         keys = {
-            { "<Leader>a", mode = "n", function() vim.cmd.RustLsp('codeAction') end, { buffer = vim.api.nvim_get_current_buf() }, desc = "LSP Code Action" },
+            {
+                "<Leader>a",
+                mode = "n",
+                function()
+                    vim.cmd.RustLsp("codeAction")
+                end,
+                { buffer = vim.api.nvim_get_current_buf() },
+                desc = "LSP Code Action",
+            },
         },
         config = function()
             vim.g.rustaceanvim = {
@@ -21,7 +46,7 @@ return {
                     settings = {
                         ["rust-analyzer"] = {
                             files = {
-                                excludeDirs = { ".direnv" }
+                                excludeDirs = { ".direnv" },
                             },
                             checkOnSave = {
                                 enable = true,
@@ -29,14 +54,14 @@ return {
                             },
                             cargo = {
                                 allFeatures = true,
-                            }
+                            },
                         },
                     },
                     on_attach = function(client, _)
                         client.server_capabilities.semanticTokensProvider = nil
                     end,
-                }
+                },
             }
-        end
-    }
+        end,
+    },
 }
