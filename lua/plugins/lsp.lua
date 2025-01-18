@@ -75,7 +75,7 @@ return {
         dependencies = {
             {
                 "williamboman/mason-lspconfig.nvim",
-                opts = { ensure_installed = { "goimports", "gofumpt", "gomodifytags" } },
+                opts = { ensure_installed = { "goimports", "gofumpt" } },
             },
 
             { "nvim-treesitter/nvim-treesitter" },
