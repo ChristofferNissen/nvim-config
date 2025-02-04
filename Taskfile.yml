@@ -1,6 +1,12 @@
 version: "3"
 tasks:
-  test:
+  symlink:
     cmds:
-      - nix-shell --run nvim
+      - rm ~/.config/local
+      - ln -s ~/code/lazyvim-config ~/.config/local
+  test:
+    deps:
+      - symlink
+    cmds:
+      - NVIM_APPNAME=local nvim
     silent: true
