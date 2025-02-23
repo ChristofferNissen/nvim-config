@@ -1,19 +1,19 @@
 return {
-    {
-        "nvim-telescope/telescope.nvim",
-        lazy = false,
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            {
-                "nvim-telescope/telescope-file-browser.nvim",
-                event = "VeryLazy",
-                dependencies = {
-                    "nvim-telescope/telescope.nvim",
-                    "nvim-lua/plenary.nvim",
-                    "nvim-tree/nvim-web-devicons",
-                },
-            },
-        },
+	{
+		"nvim-telescope/telescope.nvim",
+		lazy = false,
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			{
+				"nvim-telescope/telescope-file-browser.nvim",
+				event = "VeryLazy",
+				dependencies = {
+					"nvim-telescope/telescope.nvim",
+					"nvim-lua/plenary.nvim",
+					"nvim-tree/nvim-web-devicons",
+				},
+			},
+		},
         -- stylua: ignore
         keys = {
             {
@@ -61,20 +61,26 @@ return {
                 mode = "n",
                 function() require("telescope.builtin").resume() end,
                 desc = "telescope resume",
+            },
+            {
+                "<leader>gd",
+                mode = "n",
+                function() require("godoc.nvim").show_telescope_picker() end,
+                desc = "telescope godoc",
             }
         },
-        config = function()
-            local opts = {
-                extensions = {
-                    file_browser = {
-                        respect_gitignore = false,
-                        hijack_netrw = true,
-                        hidden = true,
-                    },
-                },
-            }
-            require("telescope").setup(opts)
-            require("telescope").load_extension("file_browser")
-        end,
-    },
+		config = function()
+			local opts = {
+				extensions = {
+					file_browser = {
+						respect_gitignore = false,
+						hijack_netrw = true,
+						hidden = true,
+					},
+				},
+			}
+			require("telescope").setup(opts)
+			require("telescope").load_extension("file_browser")
+		end,
+	},
 }
