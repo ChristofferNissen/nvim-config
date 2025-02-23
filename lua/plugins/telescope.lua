@@ -4,6 +4,7 @@ return {
 		lazy = false,
 		dependencies = {
 			"nvim-lua/plenary.nvim",
+			"fredrikaverpil/godoc.nvim",
 			{
 				"nvim-telescope/telescope-file-browser.nvim",
 				event = "VeryLazy",
@@ -63,9 +64,9 @@ return {
                 desc = "telescope resume",
             },
             {
-                "<leader>gd",
+                "<leader>pg",
                 mode = "n",
-                function() require("godoc.nvim").show_telescope_picker() end,
+                function() require("godoc").show_telescope_picker() end,
                 desc = "telescope godoc",
             }
         },
