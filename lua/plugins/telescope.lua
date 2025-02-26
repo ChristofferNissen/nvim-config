@@ -1,20 +1,40 @@
 return {
-	{
-		"nvim-telescope/telescope.nvim",
-		lazy = false,
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"fredrikaverpil/godoc.nvim",
-			{
-				"nvim-telescope/telescope-file-browser.nvim",
-				event = "VeryLazy",
-				dependencies = {
-					"nvim-telescope/telescope.nvim",
-					"nvim-lua/plenary.nvim",
-					"nvim-tree/nvim-web-devicons",
-				},
-			},
-		},
+    {
+        "nvim-telescope/telescope.nvim",
+        lazy = false,
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "fredrikaverpil/godoc.nvim",
+            {
+                "nvim-telescope/telescope-file-browser.nvim",
+                event = "VeryLazy",
+                dependencies = {
+                    "nvim-telescope/telescope.nvim",
+                    "nvim-lua/plenary.nvim",
+                    "nvim-tree/nvim-web-devicons",
+                },
+            },
+        },
+        specs = {
+            {
+                "ANGkeith/telescope-terraform-doc.nvim",
+                ft = { "terraform", "hcl" },
+                config = function()
+                    require("lazyvim").on_load("telescope.nvim", function()
+                        require("telescope").load_extension("terraform_doc")
+                    end)
+                end,
+            },
+            {
+                "cappyzawa/telescope-terraform.nvim",
+                ft = { "terraform", "hcl" },
+                config = function()
+                    require("lazyvim").on_load("telescope.nvim", function()
+                        require("telescope").load_extension("terraform")
+                    end)
+                end,
+            },
+        },
         -- stylua: ignore
         keys = {
             {
@@ -70,18 +90,18 @@ return {
                 desc = "telescope godoc",
             }
         },
-		config = function()
-			local opts = {
-				extensions = {
-					file_browser = {
-						respect_gitignore = false,
-						hijack_netrw = true,
-						hidden = true,
-					},
-				},
-			}
-			require("telescope").setup(opts)
-			require("telescope").load_extension("file_browser")
-		end,
-	},
+        config = function()
+            local opts = {
+                extensions = {
+                    file_browser = {
+                        respect_gitignore = false,
+                        hijack_netrw = true,
+                        hidden = true,
+                    },
+                },
+            }
+            require("telescope").setup(opts)
+            require("telescope").load_extension("file_browser")
+        end,
+    },
 }

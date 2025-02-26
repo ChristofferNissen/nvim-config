@@ -3,7 +3,7 @@ return {
         "williamboman/mason.nvim",
         -- opts = { ensure_installed = { "markdownlint-cli2", "markdown-toc" } },
         opts = function(_, opts)
-            opts.ensure_installed = { "markdownlint-cli2", "markdown-toc" }
+            opts.ensure_installed = { "markdownlint-cli2", "markdown-toc", "tflint" }
             vim.list_extend(opts.ensure_installed, { "codelldb" })
             if diagnostics == "bacon-ls" then
                 vim.list_extend(opts.ensure_installed, { "bacon" })
@@ -82,10 +82,15 @@ return {
         dependencies = {
             {
                 "williamboman/mason-lspconfig.nvim",
-                opts = { ensure_installed = { "goimports", "gofumpt" } },
+                opts = { ensure_installed = { "goimports", "gofumpt", "tflint" } },
             },
 
             { "nvim-treesitter/nvim-treesitter" },
+        },
+        opts = {
+            servers = {
+                terraformls = {},
+            },
         },
         config = function()
             local lsp = require("lsp-zero")
