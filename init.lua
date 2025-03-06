@@ -27,4 +27,6 @@ require("lazy").setup("plugins", {
 		fallback = false,
 	},
 })
+
+-- Load Personal Config
 require("ChristofferNissen")
