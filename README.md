@@ -1,6 +1,7 @@
 # lazynvim-config
 
 My Neovim configuration is built with the [lazy.nvim](https://lazy.folke.io/) package manager.
+
 ## Adding a plugin
 
 Plugins are normally defined in `lua/plugins.lua`. In order to make the config
