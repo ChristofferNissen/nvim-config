@@ -271,13 +271,13 @@ return {
 						})
 					end,
 
-					lua_ls = function()
-						lspconfig.lua_ls.setup({
-							on_init = function(client)
-								lsp.nvim_lua_settings(client, {})
-							end,
-						})
-					end,
+					-- lua_ls = function()
+					-- 	lspconfig.lua_ls.setup({
+					-- 		on_init = function(client)
+					-- 			lsp.nvim_lua_settings(client, {})
+					-- 		end,
+					-- 	})
+					-- end,
 
 					nil_ls = function()
 						local nil_ls_opts = {
