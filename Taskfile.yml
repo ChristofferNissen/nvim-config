@@ -8,5 +8,5 @@ tasks:
     deps:
       - symlink
     cmds:
-      - NVIM_APPNAME=local nvim
+      - NVIM_APPNAME=local nvim .
     silent: true
