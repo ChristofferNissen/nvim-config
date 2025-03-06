@@ -271,13 +271,36 @@ return {
 						})
 					end,
 
-					-- lua_ls = function()
-					-- 	lspconfig.lua_ls.setup({
-					-- 		on_init = function(client)
-					-- 			lsp.nvim_lua_settings(client, {})
-					-- 		end,
-					-- 	})
-					-- end,
+					lua_ls = function()
+						lspconfig.lua_ls.setup({
+							on_init = function(client)
+								lsp.nvim_lua_settings(client, {
+									Lua = {
+										workspace = {
+											checkThirdParty = false,
+										},
+										codeLens = {
+											enable = true,
+										},
+										completion = {
+											callSnippet = "Replace",
+										},
+										doc = {
+											privateName = { "^_" },
+										},
+										hint = {
+											enable = true,
+											setType = false,
+											paramType = true,
+											paramName = "Disable",
+											semicolon = "Disable",
+											arrayIndex = "Disable",
+										},
+									},
+								})
+							end,
+						})
+					end,
 
 					nil_ls = function()
 						local nil_ls_opts = {
