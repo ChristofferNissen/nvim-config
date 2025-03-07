@@ -87,11 +87,11 @@ return {
 
             { "nvim-treesitter/nvim-treesitter" },
         },
-        opts = {
-            servers = {
-                terraformls = {},
-            },
-        },
+        -- opts = {
+        --     servers = {
+        --         terraformls = {},
+        --     },
+        -- },
         config = function()
             local lsp = require("lsp-zero")
             local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
