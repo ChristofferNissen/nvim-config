@@ -4,7 +4,7 @@ return {
         version = "*",
         dependencies = {
             { "nvim-telescope/telescope.nvim" }, -- optional
-            { "folke/snacks.nvim" },    -- optional
+            -- { "folke/snacks.nvim" },    -- optional
             {
                 "nvim-treesitter/nvim-treesitter",
                 opts = {
