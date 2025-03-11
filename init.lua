@@ -28,5 +28,7 @@ require("lazy").setup("plugins", {
     },
 })
 
+require("ibl").setup()
+
 -- Load Personal Config
 require("ChristofferNissen")
