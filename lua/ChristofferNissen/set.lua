@@ -1,4 +1,4 @@
--- vim.opt.guicursor = ""
+vim.opt.guicursor = ""
 
 vim.opt.nu = true
 
@@ -39,7 +39,7 @@ vim.opt.autowrite = true
 vim.opt.autowriteall = true
 vim.opt.autoindent = true
 vim.opt.list = true
-vim.opt.listchars:append "space:."
-vim.opt.listchars:append "eol:󱞣"
+vim.opt.listchars:append("space:.")
+vim.opt.listchars:append("eol:󱞣")
 vim.o.timeout = true
 vim.o.timeoutlen = 1000
