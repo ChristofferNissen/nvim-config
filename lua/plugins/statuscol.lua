@@ -4,6 +4,6 @@ return {
         event = "VeryLazy",
         opts = {
             setopt = true,
-        }
+        },
     },
 }

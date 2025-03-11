@@ -1,4 +1,4 @@
-# lazynvim-config
+# nvim-config
 
 My Neovim configuration is built with the [lazy.nvim](https://lazy.folke.io/) package manager.
 
