@@ -62,13 +62,12 @@ return {
         dependencies = {
             {
                 "williamboman/mason.nvim",
-                -- opts = { ensure_installed = { "markdownlint-cli2", "markdown-toc" } },
                 opts = function(_, opts)
                     opts.ensure_installed = { "markdownlint-cli2", "markdown-toc", "tflint" }
                     vim.list_extend(opts.ensure_installed, { "codelldb" })
-                    if diagnostics == "bacon-ls" then
-                        vim.list_extend(opts.ensure_installed, { "bacon" })
-                    end
+                    -- if diagnostics == "bacon-ls" then
+                    --     vim.list_extend(opts.ensure_installed, { "bacon" })
+                    -- end
                 end,
                 config = function()
                     require("mason").setup()
@@ -211,7 +210,7 @@ return {
                             enable = true,
                         },
                         -- schemas = { kubernetes = '*.yaml' },
-                        validate = true,
+                        -- validate = true,
                         schemaStore = {
                             -- Must disable built-in schemaStore support to use
                             -- schemas from SchemaStore.nvim plugin
