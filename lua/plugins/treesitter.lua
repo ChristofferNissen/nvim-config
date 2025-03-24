@@ -33,13 +33,13 @@ return {
                 "c",
                 "c_sharp",
                 "dockerfile",
-                "dot",
-                "hyprlang",
+                -- "dot",
+                -- "hyprlang",
                 "markdown",
                 "markdown_inline",
-                "rust",
-                "ron",
-                "diff",
+                -- "rust",
+                -- "ron",
+                -- "diff",
             },
             highlight = {
                 -- `false` will disable the whole extension

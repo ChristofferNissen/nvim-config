@@ -1,25 +1,5 @@
 return {
     {
-        "williamboman/mason.nvim",
-        -- opts = { ensure_installed = { "markdownlint-cli2", "markdown-toc" } },
-        opts = function(_, opts)
-            opts.ensure_installed = { "markdownlint-cli2", "markdown-toc", "tflint" }
-            vim.list_extend(opts.ensure_installed, { "codelldb" })
-            if diagnostics == "bacon-ls" then
-                vim.list_extend(opts.ensure_installed, { "bacon" })
-            end
-        end,
-        config = function()
-            require("mason").setup()
-        end,
-    },
-    {
-        "VonHeikemen/lsp-zero.nvim",
-        branch = "v4.x",
-        lazy = true,
-        config = false,
-    },
-    {
         "hrsh7th/nvim-cmp",
         event = "InsertEnter",
         dependencies = {
@@ -81,10 +61,29 @@ return {
         event = { "BufReadPre", "BufNewFile" },
         dependencies = {
             {
-                "williamboman/mason-lspconfig.nvim",
-                opts = { ensure_installed = { "goimports", "gofumpt", "tflint" } },
+                "williamboman/mason.nvim",
+                -- opts = { ensure_installed = { "markdownlint-cli2", "markdown-toc" } },
+                opts = function(_, opts)
+                    opts.ensure_installed = { "markdownlint-cli2", "markdown-toc", "tflint" }
+                    vim.list_extend(opts.ensure_installed, { "codelldb" })
+                    if diagnostics == "bacon-ls" then
+                        vim.list_extend(opts.ensure_installed, { "bacon" })
+                    end
+                end,
+                config = function()
+                    require("mason").setup()
+                end,
             },
-
+            {
+                "williamboman/mason-lspconfig.nvim",
+                opts = { ensure_installed = { "tflint", "lua_ls", "gopls", "rust_analyzer", "terraformls", "yamlls" } },
+            },
+            {
+                "VonHeikemen/lsp-zero.nvim",
+                branch = "v4.x",
+                lazy = true,
+                config = false,
+            },
             { "nvim-treesitter/nvim-treesitter" },
         },
         config = function()
@@ -128,6 +127,15 @@ return {
                 client.server_capabilities.semanticTokensProvider = nil
             end
 
+            vim.diagnostic.config({
+                virtual_text = true,
+                signs = true,
+                update_in_insert = true,
+                underline = true,
+                severity_sort = false,
+                float = true,
+            })
+
             lsp.extend_lspconfig({
                 capabilities = require("cmp_nvim_lsp").default_capabilities(),
                 lsp_attach = lsp_attach,
@@ -155,15 +163,6 @@ return {
                 filetypes = { "nu" },
                 root_dir = require("lspconfig.util").find_git_ancestor,
                 single_file_support = true,
-            })
-
-            vim.diagnostic.config({
-                virtual_text = true,
-                signs = true,
-                update_in_insert = true,
-                underline = true,
-                severity_sort = false,
-                float = true,
             })
 
             lspconfig.gopls.setup({
@@ -205,118 +204,53 @@ return {
                 },
             })
 
-            require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "gopls", "terraformls", "yamlls" },
-                handlers = {
-                    function(server_name)
-                        lspconfig[server_name].setup({})
-                    end,
-
-                    gopls = function(_, opts)
-                        -- workaround for gopls not supporting semanticTokensProvider
-                        -- https://github.com/golang/go/issues/54531#issuecomment-1464982242
-                        lsp_attach = function(client, bufnr)
-                            local opts = { buffer = bufnr, remap = false }
-                            vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-                            vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-                            vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, opts)
-                            vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts)
-                            vim.keymap.set("n", "[d", function()
-                                vim.diagnostic.jump({ count = -1, float = true })
-                            end, opts)
-                            vim.keymap.set("n", "]d", function()
-                                vim.diagnostic.jump({ count = 1, float = true })
-                            end, opts)
-                            vim.keymap.set("n", "<leader>vca", vim.lsp.buf.code_action, opts)
-                            vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, opts)
-                            vim.keymap.set("n", "<leader>vrr", vim.lsp.buf.references, opts)
-                            vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, opts)
-                            vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
-                            client.server_capabilities.semanticTokensProvider = nil
-                        end
-                        lsp.on_attach(function(client, _)
-                            if client.name == "gopls" and not client.server_capabilities.semanticTokensProvider then
-                                local semantic = client.config.capabilities.textDocument.semanticTokens
-                                client.server_capabilities.semanticTokensProvider = {
-                                    full = true,
-                                    legend = {
-                                        tokenTypes = semantic.tokenTypes,
-                                        tokenModifiers = semantic.tokenModifiers,
-                                    },
-                                    range = true,
-                                }
-                            end
-                        end, "gopls")
-                        -- end workaround
-                    end,
-
-                    rust_analyzer = { enabled = false },
-
-                    yamlls = function()
-                        lspconfig.yamlls.setup({
-                            settings = {
-                                yaml = {
-                                    format = {
-                                        enable = true,
-                                    },
-                                    -- schemas = { kubernetes = '*.yaml' },
-                                    validate = true,
-                                    schemaStore = {
-                                        -- Must disable built-in schemaStore support to use
-                                        -- schemas from SchemaStore.nvim plugin
-                                        enable = false,
-                                        -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
-                                        url = "",
-                                    },
-                                    schemas = require("schemastore").yaml.schemas(),
-                                },
-                            },
-                        })
-                    end,
-
-                    lua_ls = function()
-                        lspconfig.lua_ls.setup({
-                            on_init = function(client)
-                                lsp.nvim_lua_settings(client, {
-                                    Lua = {
-                                        workspace = {
-                                            checkThirdParty = false,
-                                        },
-                                        codeLens = {
-                                            enable = true,
-                                        },
-                                        completion = {
-                                            callSnippet = "Replace",
-                                        },
-                                        doc = {
-                                            privateName = { "^_" },
-                                        },
-                                        hint = {
-                                            enable = true,
-                                            setType = false,
-                                            paramType = true,
-                                            paramName = "Disable",
-                                            semicolon = "Disable",
-                                            arrayIndex = "Disable",
-                                        },
-                                    },
-                                })
-                            end,
-                        })
-                    end,
-
-                    nil_ls = function()
-                        local nil_ls_opts = {
-                            settings = {},
-                        }
-                        nil_ls_opts.settings["nil"] = {
-                            formatting = {
-                                command = { "nixpkgs-fmt" },
-                            },
-                        }
-                        lspconfig.nil_ls.setup(nil_ls_opts)
-                    end,
+            lspconfig.yamlls.setup({
+                settings = {
+                    yaml = {
+                        format = {
+                            enable = true,
+                        },
+                        -- schemas = { kubernetes = '*.yaml' },
+                        validate = true,
+                        schemaStore = {
+                            -- Must disable built-in schemaStore support to use
+                            -- schemas from SchemaStore.nvim plugin
+                            enable = false,
+                            -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
+                            url = "",
+                        },
+                        schemas = require("schemastore").yaml.schemas(),
+                    },
                 },
+            })
+
+            lspconfig.lua_ls.setup({
+                on_init = function(client)
+                    lsp.nvim_lua_settings(client, {
+                        Lua = {
+                            workspace = {
+                                checkThirdParty = false,
+                            },
+                            codeLens = {
+                                enable = true,
+                            },
+                            completion = {
+                                callSnippet = "Replace",
+                            },
+                            doc = {
+                                privateName = { "^_" },
+                            },
+                            hint = {
+                                enable = true,
+                                setType = false,
+                                paramType = true,
+                                paramName = "Disable",
+                                semicolon = "Disable",
+                                arrayIndex = "Disable",
+                            },
+                        },
+                    })
+                end,
             })
         end,
     },
