@@ -28,3 +28,27 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 
 -- terraform doc
 vim.api.nvim_set_keymap("n", "<leader>do", ":OpenDoc<CR>", { noremap = true, silent = true })
+
+-- Function to toggle Oil file explorer
+-- function ToggleOil()
+--     local bufname = vim.api.nvim_buf_get_name(0)
+--     if bufname:match("^oil://") then
+--         vim.cmd('bd')  -- close the buffer if it's an Oil buffer
+--     else
+--         vim.cmd('Oil') -- open Oil file explorer
+--     end
+-- end
+
+-- function CloseOil()
+--     local bufname = vim.api.nvim_buf_get_name(0)
+--     if bufname:match("^oil://") then
+--         vim.cmd('bd') -- close the buffer if it's an Oil buffer
+--     end
+-- end
+
+-- Keybinding for Oil file explorer
+-- vim.api.nvim_set_keymap('n', '<leader>e', ':lua ToggleOil()<CR>', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '<leader>q', ':lua CloseOil()<CR>', { noremap = true, silent = true })
+
+-- Keybinding to open Oil file explorer
+vim.api.nvim_set_keymap('n', '<leader>e', ':Oil<CR>', { noremap = true, silent = true })
