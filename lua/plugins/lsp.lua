@@ -5,17 +5,21 @@ return {
         dependencies = {
             { "onsails/lspkind.nvim" },
             { "L3MON4D3/LuaSnip" },
-            --     -- Snippet Collection (Optional)
             { "rafamadriz/friendly-snippets" },
+            { "saadparwaiz1/cmp_luasnip" },
             { "hrsh7th/cmp-buffer" },
             { "hrsh7th/cmp-path" },
-            { "saadparwaiz1/cmp_luasnip" },
             { "hrsh7th/cmp-nvim-lsp" },
             { "hrsh7th/cmp-nvim-lua" },
+            {
+                "zbirenbaum/copilot-cmp",
+                enabled = true,
+                opts = {},
+            },
         },
         config = function()
             local cmp = require("cmp")
-            -- local cmp_format = require('lsp-zero').cmp_format()
+
             local cmp_select = { behavior = cmp.SelectBehavior.Select }
             local cmp_mappings = cmp.mapping.preset.insert({
                 ["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
@@ -44,15 +48,14 @@ return {
                         },
                     }),
                 },
-                sources = {
-                    { name = "supermaven" },
+                sources = cmp.config.sources({
                     { name = "nvim_lsp" },
                     { name = "buffer" },
                     { name = "copilot" },
                     { name = "path" },
                     { name = "luasnip" },
                     { name = "render-markdown" },
-                },
+                }),
             })
         end,
     },
@@ -60,19 +63,6 @@ return {
         "neovim/nvim-lspconfig",
         event = { "BufReadPre", "BufNewFile" },
         dependencies = {
-            {
-                "williamboman/mason.nvim",
-                opts = function(_, opts)
-                    opts.ensure_installed = { "markdownlint-cli2", "markdown-toc", "tflint" }
-                    vim.list_extend(opts.ensure_installed, { "codelldb" })
-                    -- if diagnostics == "bacon-ls" then
-                    --     vim.list_extend(opts.ensure_installed, { "bacon" })
-                    -- end
-                end,
-                config = function()
-                    require("mason").setup()
-                end,
-            },
             {
                 "williamboman/mason-lspconfig.nvim",
                 opts = { ensure_installed = { "tflint", "lua_ls", "gopls", "rust_analyzer", "terraformls", "yamlls" } },
@@ -143,6 +133,7 @@ return {
                 set_lsp_keymaps = { preserve_mappings = false },
             })
 
+
             local lspconfig = require("lspconfig")
 
             lspconfig.terraformls.setup({
@@ -153,7 +144,7 @@ return {
                 -- Other lspconfig settings
             })
 
-            lspconfig.marksman.setup({})
+            lspconfig.marksman.setup({ filetypes = { "markdown" } })
 
             lspconfig.gleam.setup({})
 
@@ -209,6 +200,24 @@ return {
                         format = {
                             enable = true,
                         },
+                        schemas = {
+                            kubernetes = "*.yaml",
+                            ["http://json.schemastore.org/github-workflow"] = ".github/workflows/*",
+                            ["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
+                            ["http://json.schemastore.org/ansible-stable-2.9"] = "roles/tasks/*.{yml,yaml}",
+                            ["http://json.schemastore.org/prettierrc"] = ".prettierrc.{yml,yaml}",
+                            ["http://json.schemastore.org/kustomization"] = "kustomization.{yml,yaml}",
+                            ["http://json.schemastore.org/ansible-playbook"] = "*play*.{yml,yaml}",
+                            ["http://json.schemastore.org/chart"] = "Chart.{yml,yaml}",
+                            ["https://json.schemastore.org/dependabot-v2"] = ".github/dependabot.{yml,yaml}",
+                            ["https://json.schemastore.org/gitlab-ci"] = "*gitlab-ci*.{yml,yaml}",
+                            ["https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.1/schema.json"] =
+                            "*api*.{yml,yaml}",
+                            ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] =
+                            "*docker-compose*.{yml,yaml}",
+                            ["https://raw.githubusercontent.com/argoproj/argo-workflows/master/api/jsonschema/schema.json"] =
+                            "*flow*.{yml,yaml}",
+                        },
                         -- schemas = { kubernetes = '*.yaml' },
                         -- validate = true,
                         schemaStore = {
@@ -218,7 +227,7 @@ return {
                             -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
                             url = "",
                         },
-                        schemas = require("schemastore").yaml.schemas(),
+                        -- schemas = require("schemastore").yaml.schemas(),
                     },
                 },
             })

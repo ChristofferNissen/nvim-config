@@ -51,4 +51,5 @@ vim.api.nvim_set_keymap("n", "<leader>do", ":OpenDoc<CR>", { noremap = true, sil
 -- vim.api.nvim_set_keymap('n', '<leader>q', ':lua CloseOil()<CR>', { noremap = true, silent = true })
 
 -- Keybinding to open Oil file explorer
-vim.api.nvim_set_keymap('n', '<leader>e', ':Oil --float<CR>', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '<leader>e', ':Oil --float<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>e', ':Oil<CR>', { noremap = true, silent = true })

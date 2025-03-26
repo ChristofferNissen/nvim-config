@@ -1,4 +1,4 @@
-local go_package = function()
+go_package = function()
     for _, line in ipairs(vim.api.nvim_buf_get_lines(0, 0, -1, true)) do
         if line:match("^package ") then
             return "⬡ " .. string.sub(line, 9)
