@@ -1,5 +1,11 @@
 return {
     {
+        "j-hui/fidget.nvim",
+        -- tag = "legacy",
+        event = "LspAttach",
+        opts = {},
+    },
+    {
         "hrsh7th/nvim-cmp",
         event = "InsertEnter",
         dependencies = {
