@@ -6,10 +6,10 @@ return {
             { "rcarriga/nvim-dap-ui" },
             { "nvim-neotest/nvim-nio" },
             { "leoluz/nvim-dap-go" },
-            {
-                "williamboman/mason.nvim",
-                opts = { ensure_installed = { "delve" } },
-            },
+            -- {
+            --     "williamboman/mason.nvim",
+            --     opts = { ensure_installed = { "delve" } },
+            -- },
         },
         keys = {
             {
@@ -144,9 +144,9 @@ return {
             dap.configurations = {
                 go = {
                     {
-                        type = "go", -- Which adapter to use
+                        type = "go",            -- Which adapter to use
                         name = "Debug go file", -- Human readable name
-                        request = "launch", -- Whether to "launch" or "attach" to program
+                        request = "launch",     -- Whether to "launch" or "attach" to program
                         program = "${file}",
                     },
                 },
@@ -169,7 +169,7 @@ return {
                 type = "server",
                 port = "${port}",
                 executable = {
-                    command = vim.fn.stdpath("data") .. "/mason/bin/dlv",
+                    command = vim.fn.stdpath("data") .. "/etc/profiles/per-user/cn/bin/dlv",
                     args = { "dap", "-l", "127.0.0.1:${port}" },
                 },
             }
