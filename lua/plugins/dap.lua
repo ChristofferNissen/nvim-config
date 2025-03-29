@@ -6,10 +6,10 @@ return {
             { "rcarriga/nvim-dap-ui" },
             { "nvim-neotest/nvim-nio" },
             { "leoluz/nvim-dap-go" },
-            -- {
-            --     "williamboman/mason.nvim",
-            --     opts = { ensure_installed = { "delve" } },
-            -- },
+            {
+                "williamboman/mason.nvim",
+                opts = { ensure_installed = { "delve" } },
+            },
         },
         keys = {
             {
@@ -169,7 +169,7 @@ return {
                 type = "server",
                 port = "${port}",
                 executable = {
-                    command = vim.fn.stdpath("data") .. "/etc/profiles/per-user/cn/bin/dlv",
+                    command = vim.fn.stdpath("data") .. "/mason/bin/dlv",
                     args = { "dap", "-l", "127.0.0.1:${port}" },
                 },
             }
