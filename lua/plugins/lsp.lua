@@ -69,7 +69,10 @@ return {
         "neovim/nvim-lspconfig",
         event = { "BufReadPre", "BufNewFile" },
         dependencies = {
-            { "williamboman/mason.nvim" },
+            {
+                "williamboman/mason.nvim",
+                opts = { ensure_installed = { "goimports", "gofumpt", "gomodifytags", "impl", "delve" } },
+            },
             {
                 "williamboman/mason-lspconfig.nvim",
                 opts = { ensure_installed = { "tflint", "lua_ls", "gopls", "rust_analyzer", "terraformls", "yamlls" } },
@@ -163,6 +166,21 @@ return {
             })
 
             lspconfig.gopls.setup({
+                on_attach = function(client)
+                    if not client.server_capabilities.semanticTokensProvider then
+                        local semantic = client.config.capabilities.textDocument.semanticTokens
+                        client.server_capabilities.semanticTokensProvider = {
+                            full = true,
+                            legend = {
+                                tokenTypes = semantic.tokenTypes,
+                                tokenModifiers = semantic.tokenModifiers,
+                            },
+                            range = true,
+                        }
+                    end
+                    -- Other on_attach configurations
+                end,
+                -- Other lspconfig settings
                 settings = {
                     gopls = {
                         gofumpt = true,
