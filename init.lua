@@ -31,14 +31,15 @@ require("lazy").setup("plugins", {
 -- Load Personal Config
 vim.loader.enable(true)
 require("ChristofferNissen")
-vim.lsp.enable({'gopls', 'luals'})
+vim.lsp.enable({ 'gopls', 'luals', 'terraform-ls', 'yamlls', 'rust_analyzer', 'marksman', 'gleam', 'dockerls',
+    'docker_compose' })
 
+-- https://gpanders.com/blog/whats-new-in-neovim-0-11/
 vim.api.nvim_create_autocmd('LspAttach', {
-  callback = function(ev)
-    local client = vim.lsp.get_client_by_id(ev.data.client_id)
-    if client:supports_method('textDocument/completion') then
-      vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
-    end
-  end,
+    callback = function(ev)
+        local client = vim.lsp.get_client_by_id(ev.data.client_id)
+        if client:supports_method('textDocument/completion') then
+            vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
+        end
+    end,
 })
-

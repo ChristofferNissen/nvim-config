@@ -1,5 +1,18 @@
 return {
     {
+        "j-hui/fidget.nvim",
+        -- tag = "legacy",
+        event = "LspAttach",
+        opts = {},
+    },
+    {
+        "lewis6991/gitsigns.nvim",
+        lazy = true,
+        tag = "v1.0.0",
+        event = { "BufReadPost" },
+        opts = {},
+    },
+    {
         "folke/todo-comments.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
         opts = {}
