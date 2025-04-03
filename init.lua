@@ -32,7 +32,7 @@ require("lazy").setup("plugins", {
 vim.loader.enable(true)
 require("ChristofferNissen")
 vim.lsp.enable({ 'gopls', 'luals', 'terraform-ls', 'yamlls', 'rust_analyzer', 'marksman', 'gleam', 'dockerls',
-    'docker_compose' })
+    'docker_compose', 'nix' })
 
 -- https://gpanders.com/blog/whats-new-in-neovim-0-11/
 vim.api.nvim_create_autocmd('LspAttach', {
