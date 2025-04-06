@@ -40,6 +40,8 @@ return {
                 "rust",
                 "ron",
                 "diff",
+                "bash",
+                "regex"
             },
             highlight = {
                 -- `false` will disable the whole extension
