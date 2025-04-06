@@ -15,6 +15,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- General settings
 vim.g.mapleader = " "
 vim.opt.termguicolors = true
 vim.opt.guicursor = ""
@@ -29,23 +30,7 @@ require("lazy").setup("plugins", {
 })
 
 -- Load Personal Config
--- vim.loader.enable(true)
 require("ChristofferNissen")
-vim.lsp.enable(
-    {
-        'gopls',
-        'luals',
-        'terraform-ls',
-        'yamlls',
-        'rust_analyzer',
-        'marksman',
-        'gleam',
-        'dockerls',
-        'docker_compose',
-        'nix',
-        "zls"
-    }
-)
 
 -- Configure diagnostics
 vim.diagnostic.config({

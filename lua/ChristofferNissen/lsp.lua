@@ -1,0 +1,15 @@
+vim.lsp.enable(
+    {
+        'gopls',
+        'luals',
+        'terraform-ls',
+        'yamlls',
+        'rust_analyzer',
+        'marksman',
+        'gleam',
+        'dockerls',
+        'docker_compose',
+        'nix',
+        "zls"
+    }
+)
