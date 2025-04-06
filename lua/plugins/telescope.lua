@@ -33,6 +33,7 @@ return {
             },
             {
                 "<C-p>",
+                -- "<leader>e",
                 mode = "n",
                 function() require("telescope.builtin").git_files() end,
                 desc = "telescope find files"
@@ -50,17 +51,18 @@ return {
             --     mode = "n",
             --     function()
             --         require("telescope.builtin").treesitter()
-            --     end,
+            --     end
             --     desc = "telescope treesitter"
             -- },
             {
-                "<leader>b",
+                "<leader>pb",
                 mode = "n",
                 function() require("telescope.builtin").buffers() end,
                 desc = "telescope buffers"
             },
             {
-                "<leader>pv",
+                -- "<leader>pv",
+                "<leader>e",
                 mode = "n",
                 function() require("telescope").extensions.file_browser.file_browser() end,
                 desc = "telescope file browser"
