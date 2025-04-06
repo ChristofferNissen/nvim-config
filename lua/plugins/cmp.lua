@@ -46,7 +46,34 @@ return {
             },
 
             -- (Default) Only show the documentation popup when manually triggered
-            completion = { documentation = { auto_show = false } },
+            -- completion = { documentation = { auto_show = false } },
+            completion = {
+                menu = {
+                    border = 'single',
+                    draw = {
+                        components = {
+                            kind_icon = {
+                                text = function(ctx)
+                                    local kind_icon, _, _ = require('mini.icons').get('lsp', ctx.kind)
+                                    return kind_icon
+                                end,
+                                -- (optional) use highlights from mini.icons
+                                highlight = function(ctx)
+                                    local _, hl, _ = require('mini.icons').get('lsp', ctx.kind)
+                                    return hl
+                                end,
+                            },
+                            kind = {
+                                -- (optional) use highlights from mini.icons
+                                highlight = function(ctx)
+                                    local _, hl, _ = require('mini.icons').get('lsp', ctx.kind)
+                                    return hl
+                                end,
+                            }
+                        }
+                    }
+                }
+            },
 
             -- Default list of enabled providers defined so that you can extend it
             -- elsewhere in your config, without redefining it, due to `opts_extend`
@@ -76,85 +103,4 @@ return {
         },
         opts_extend = { "sources.default" }
     },
-    -- {
-    --     "neovim/nvim-lspconfig",
-    --     event = { "BufReadPre", "BufNewFile" },
-    --     dependencies = {
-    --         {
-    --             "williamboman/mason.nvim",
-    --             opts = { ensure_installed = { "goimports", "gofumpt", "gomodifytags", "impl", "delve" } },
-    --         },
-    --         {
-    --             "williamboman/mason-lspconfig.nvim",
-    --             opts = { ensure_installed = { "tflint", "lua_ls", "gopls", "rust_analyzer", "terraformls", "yamlls" } },
-    --         },
-    --         {
-    --             "VonHeikemen/lsp-zero.nvim",
-    --             branch = "v4.x",
-    --             lazy = true,
-    --             config = false,
-    --         },
-    --         { "nvim-treesitter/nvim-treesitter" },
-    --     },
-    --     config = function()
-    --         local lsp = require("lsp-zero")
-    --         local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-    --         parser_config.nu = {
-    --             install_info = {
-    --                 url = "https://github.com/nushell/tree-sitter-nu",
-    --                 files = { "src/parser.c" },
-    --                 branch = "main",
-    --             },
-    --             filetype = "nu",
-    --         }
-    --
-    --         local format_sync_grp = vim.api.nvim_create_augroup("Format", {})
-    --         vim.api.nvim_create_autocmd("BufWritePre", {
-    --             pattern = "*",
-    --             callback = function()
-    --                 vim.lsp.buf.format({ timeout_ms = 200 })
-    --             end,
-    --             group = format_sync_grp,
-    --         })
-    --
-    --         local lsp_attach = function(client, bufnr)
-    --             local opts = { buffer = bufnr, remap = false }
-    --             vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-    --             vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-    --             vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, opts)
-    --             vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts)
-    --             vim.keymap.set("n", "[d", function()
-    --                 vim.diagnostic.jump({ count = -1, float = true })
-    --             end, opts)
-    --             vim.keymap.set("n", "]d", function()
-    --                 vim.diagnostic.jump({ count = 1, float = true })
-    --             end, opts)
-    --             vim.keymap.set("n", "<leader>vca", vim.lsp.buf.code_action, opts)
-    --             vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, opts)
-    --             vim.keymap.set("n", "<leader>vrr", vim.lsp.buf.references, opts)
-    --             vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, opts)
-    --             vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
-    --             client.server_capabilities.semanticTokensProvider = nil
-    --         end
-    --
-    --         vim.diagnostic.config({
-    --             virtual_text = true,
-    --             signs = true,
-    --             update_in_insert = true,
-    --             underline = true,
-    --             severity_sort = false,
-    --             float = true,
-    --         })
-    --
-    --         lsp.extend_lspconfig({
-    --             capabilities = require("cmp_nvim_lsp").default_capabilities(),
-    --             lsp_attach = lsp_attach,
-    --             float_border = "rounded",
-    --             sign_text = true,
-    --             set_lsp_keymaps = { preserve_mappings = false },
-    --         })
-    --
-    --         local lspconfig = require("lspconfig")
-    --     end,
-    -- },
 }
