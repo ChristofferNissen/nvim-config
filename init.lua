@@ -31,18 +31,3 @@ require("lazy").setup("plugins", {
 
 -- Load Personal Config
 require("ChristofferNissen")
--- vim.cmd [[colorscheme tokyonight-storm]]
-vim.cmd([[colorscheme catppuccin-mocha]])
-
--- Configure diagnostics
-vim.diagnostic.config({
-    virtual_text = true,
-    signs = true,
-    update_in_insert = true,
-    underline = true,
-    severity_sort = false,
-    float = {
-        border = "rounded",
-        -- source = "always",
-    },
-})

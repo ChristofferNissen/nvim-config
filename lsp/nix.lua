@@ -1,5 +1,5 @@
 ---@type vim.lsp.Config
 return {
-    cmd = { "nixd"},
+    cmd = { "nixd" },
     filetypes = { "nix" },
 }

@@ -31,3 +31,4 @@ vim.api.nvim_set_keymap("n", "<leader>do", ":OpenDoc<CR>", { noremap = true, sil
 
 -- Keybinding to open Oil file explorer
 -- vim.api.nvim_set_keymap('n', '<leader>e', ':Oil<CR>', { noremap = true, silent = true })
+--

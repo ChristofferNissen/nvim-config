@@ -8,3 +8,16 @@ vim.g.lazyvim_rust_diagnostics = "rust-analyzer"
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldenable = false
+
+-- Configure diagnostics
+vim.diagnostic.config({
+    virtual_text = true,
+    signs = true,
+    update_in_insert = true,
+    underline = true,
+    severity_sort = false,
+    float = {
+        border = "rounded",
+        -- source = "always",
+    },
+})
