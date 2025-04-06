@@ -23,8 +23,8 @@ return {
         vim.keymap.set("n", "<leader>vrr", vim.lsp.buf.references, opts)
         vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, opts)
         vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
-        client.server_capabilities.semanticTokensProvider = nil
 
+        -- client.server_capabilities.semanticTokensProvider = nil
         if not client.server_capabilities.semanticTokensProvider then
             local semantic = client.config.capabilities.textDocument.semanticTokens
             client.server_capabilities.semanticTokensProvider = {
@@ -37,6 +37,9 @@ return {
             }
         end
     end,
+    -- on_attach = function(client)
+    --     -- Other on_attach configurations
+    -- end,
     settings = {
         gopls = {
             gofumpt = true,
