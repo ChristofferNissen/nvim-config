@@ -5,14 +5,6 @@ return {
         dependencies = {
             'rafamadriz/friendly-snippets',
             'fang2hou/blink-copilot',
-            -- {
-            --     "supermaven-inc/supermaven-nvim",
-            --     opts = {
-            --         disable_inline_completion = true, -- disables inline completion for use with cmp
-            --         disable_keymaps = true -- disables built in keymaps for more manual control
-            --     }
-            -- },
-            -- 'huijiro/blink-cmp-supermaven'
         },
 
         -- use a release tag to download pre-built binaries
@@ -78,7 +70,7 @@ return {
             -- Default list of enabled providers defined so that you can extend it
             -- elsewhere in your config, without redefining it, due to `opts_extend`
             sources = {
-                default = { 'copilot', 'lsp', 'path', 'snippets', 'buffer', }, -- "supermaven"
+                default = { 'copilot', 'lsp', 'path', 'snippets', 'buffer' },
                 providers = {
                     copilot = {
                         name = "copilot",
@@ -86,11 +78,6 @@ return {
                         score_offset = 100,
                         async = true,
                     },
-                    -- supermaven = {
-                    --     name = 'supermaven',
-                    --     module = "blink-cmp-supermaven",
-                    --     async = true
-                    -- }
                 },
             },
 

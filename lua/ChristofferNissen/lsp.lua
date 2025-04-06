@@ -11,7 +11,7 @@ vim.lsp.enable(
         'dockerls',
         'docker_compose',
         'nix',
-        "zls"
+        "zls",
     }
 )
 

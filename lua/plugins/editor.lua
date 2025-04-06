@@ -1,16 +1,8 @@
 return {
     {
-        "j-hui/fidget.nvim",
-        -- tag = "legacy",
-        event = "LspAttach",
-        opts = {},
-    },
-    {
-        "lewis6991/gitsigns.nvim",
+        "b0o/SchemaStore.nvim",
         lazy = true,
-        tag = "v1.0.0",
-        event = { "BufReadPost" },
-        opts = {},
+        version = false, -- last release is way too old
     },
     {
         "folke/todo-comments.nvim",
@@ -75,5 +67,15 @@ return {
             { "<leader>r",  mode = "x", function() require('substitute').visual() end,   desc = "substitute w/ visual" },
         },
         opts = {},
-    }
+    },
+    {
+        "mfussenegger/nvim-lint",
+        optional = true,
+        opts = {
+            linters_by_ft = {
+                terraform = { "terraform_validate" },
+                tf = { "terraform_validate" },
+            },
+        },
+    },
 }
