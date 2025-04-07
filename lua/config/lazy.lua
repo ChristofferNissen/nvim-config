@@ -26,7 +26,7 @@ require("lazy").setup({
         { import = "plugins" },
     },
     defaults = {
-        lazy = true,                      -- every plugin is lazy-loaded by default
+        -- lazy = true,                      -- every plugin is lazy-loaded by default
     },
     rocks = { enabled = false },          -- disable rocks
     dev = {
