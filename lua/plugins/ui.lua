@@ -42,6 +42,7 @@ return {
     },
     {
         "echasnovski/mini.icons",
+        lazy = true,
         opts = {
             file = {
                 [".go-version"] = { glyph = "", hl = "MiniIconsBlue" },
