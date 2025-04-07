@@ -26,13 +26,12 @@ require("lazy").setup({
         { import = "plugins" },
     },
     defaults = {
-        lazy = true,                          -- every plugin is lazy-loaded by default
-        -- version = false, -- enable lazy.nvim to manage versions
-        rocks = { enabled = false },          -- disable rocks
-        dev = {
-            path = "~/.local/share/nvim/nix", -- path to your dev plugins
-            fallback = false,                 -- fallback to git if not found
-        },
+        lazy = true,                      -- every plugin is lazy-loaded by default
+    },
+    rocks = { enabled = false },          -- disable rocks
+    dev = {
+        path = "~/.local/share/nvim/nix", -- path to your dev plugins
+        fallback = false,                 -- fallback to git if not found
     },
     -- Configure any other settings here. See the documentation for more details.
     -- colorscheme that will be used when installing plugins.
