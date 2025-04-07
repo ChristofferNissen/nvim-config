@@ -61,8 +61,8 @@ return {
                 desc = "telescope buffers"
             },
             {
-                -- "<leader>pv",
-                "<leader>e",
+                "<leader>pv",
+                -- "<leader>e",
                 mode = "n",
                 function() require("telescope").extensions.file_browser.file_browser() end,
                 desc = "telescope file browser"
