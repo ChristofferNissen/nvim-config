@@ -1,6 +1,7 @@
 return {
     {
         "Afourcat/treesitter-terraform-doc.nvim",
+        event = { "BufReadPost", "BufNewFile" },
         config = function()
             require("treesitter-terraform-doc").setup({
                 command_name = "OpenDoc",
