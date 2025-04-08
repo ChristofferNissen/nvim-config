@@ -4,7 +4,6 @@ return {
         version = false, -- wait till new 0.7.0 release to put it back on semver
         event = { "BufReadPre", "BufNewFile" },
         opts = {
-            -- symbol = "▏",
             symbol = "│",
             options = { try_as_border = true },
         },
@@ -40,19 +39,6 @@ return {
             })
         end,
     },
-    {
-        "echasnovski/mini.icons",
-        lazy = true,
-        opts = {
-            file = {
-                [".go-version"] = { glyph = "", hl = "MiniIconsBlue" },
-            },
-            filetype = {
-                gotmpl = { glyph = "󰟓", hl = "MiniIconsGrey" },
-            },
-        },
-    },
-    { "nvim-tree/nvim-web-devicons", opts = {}, lazy = true },
     {
         "lewis6991/gitsigns.nvim",
         lazy = true,

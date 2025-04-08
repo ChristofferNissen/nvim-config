@@ -9,12 +9,6 @@ return {
         end,
     },
     -- {
-    --     "folke/tokyonight.nvim",
-    --     lazy = false,
-    --     priority = 1000,
-    --     opts = {},
-    -- }
-    -- {
     --     "dracula/vim",
     --     lazy = false,
     --     priority = 1000,
