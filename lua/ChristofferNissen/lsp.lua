@@ -11,6 +11,7 @@ vim.lsp.enable(
         'dockerls',
         'docker_compose',
         'nix',
+        "omnisharp",
         "zls",
         "css",
         "azpls"
