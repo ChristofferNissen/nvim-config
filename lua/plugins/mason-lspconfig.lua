@@ -9,7 +9,6 @@ return {
             "terraformls",
             "yamlls",
             "azure_pipelines_ls",
-
         }
     },
 }
