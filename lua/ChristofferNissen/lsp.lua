@@ -1,7 +1,3 @@
-require("mason-lspconfig").setup {
-    ensure_installed = { "lua_ls", "rust_analyzer" },
-}
-
 -- LSP configs in lsp/
 vim.lsp.enable(
     {
