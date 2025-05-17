@@ -14,7 +14,6 @@ vim.lsp.enable(
         "omnisharp",
         "zls",
         "css",
-        "azpls"
     }
 )
 

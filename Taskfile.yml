@@ -3,10 +3,11 @@ tasks:
   symlink:
     cmds:
       - rm ~/.config/local
-      - ln -s ~/configs/lazyvim-config ~/.config/local
+      - ln -s ~/code/lazyvim-config ~/.config/local
   test:
     deps:
       - symlink
     cmds:
       - NVIM_APPNAME=local nvim .
     silent: true
+    interactive: false
