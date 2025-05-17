@@ -1,6 +1,7 @@
 -- LSP configs in lsp/
 vim.lsp.enable(
     {
+        'azure-pipelines-ls',
         'gopls',
         'luals',
         'terraform-ls',
