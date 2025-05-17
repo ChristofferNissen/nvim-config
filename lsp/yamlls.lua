@@ -2,31 +2,20 @@
 return {
     cmd = { "yaml-language-server", "--stdio" },
     settings = {
-        settings = {
-            gopls = {
-                analyses = {
-                    unusedparams = true,
-                },
-                hints = {
-                    assignVariableTypes = true,
-                    compositeLiteralFields = true,
-                    compositeLiteralTypes = true,
-                    constantValues = true,
-                    functionTypeParameters = true,
-                    parameterNames = true,
-                    rangeVariableTypes = true,
-                },
-                staticcheck = true,
-                gofumpt = true,
-                semanticTokens = true,
-            },
-        },
         yaml = {
             format = {
                 enable = true,
             },
             schemas = {
                 kubernetes = "*.yaml",
+                ["https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/master/service-schema.json"] =
+                "/azure-pipeline*.y*l",
+                -- ["https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/master/service-schema.json"] = {
+                --     "/azure-pipeline*.y*l",
+                --     "/*.azure*",
+                --     "Azure-Pipelines/**/*.y*l",
+                --     "Pipelines/*.y*l",
+                -- },
                 ["http://json.schemastore.org/github-workflow"] = ".github/workflows/*",
                 ["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
                 ["http://json.schemastore.org/ansible-stable-2.9"] = "roles/tasks/*.{yml,yaml}",
