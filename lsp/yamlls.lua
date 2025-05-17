@@ -10,6 +10,7 @@ return {
                 kubernetes = "*.yaml",
                 ["https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/master/service-schema.json"] =
                 "/azure-pipeline*.y*l",
+                ["https://taskfile.dev/schema.json"] = "**/Taskfile.yml",
                 -- ["https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/master/service-schema.json"] = {
                 --     "/azure-pipeline*.y*l",
                 --     "/*.azure*",
@@ -53,5 +54,5 @@ return {
     --     },
     -- },
     single_file_support = true,
-    filetypes = { "yaml", "yaml.docker-compose", "yaml.gitlab" },
+    filetypes = { "yml", "yaml", "yaml.docker-compose", "yaml.gitlab" },
 }
