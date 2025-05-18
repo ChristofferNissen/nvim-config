@@ -5,15 +5,15 @@ return {
         dependencies = {
             "nvim-lua/plenary.nvim",
             "fredrikaverpil/godoc.nvim",
-            -- {
-            --     "nvim-telescope/telescope-file-browser.nvim",
-            --     event = "VeryLazy",
-            --     dependencies = {
-            --         "nvim-telescope/telescope.nvim",
-            --         "nvim-lua/plenary.nvim",
-            --         "nvim-tree/nvim-web-devicons",
-            --     },
-            -- },
+            {
+                "nvim-telescope/telescope-file-browser.nvim",
+                event = "VeryLazy",
+                dependencies = {
+                    "nvim-telescope/telescope.nvim",
+                    "nvim-lua/plenary.nvim",
+                    "nvim-tree/nvim-web-devicons",
+                },
+            },
             {
                 "ANGkeith/telescope-terraform-doc.nvim",
                 dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
@@ -93,17 +93,17 @@ return {
             }
         },
         config = function()
-            -- local opts = {
-            --     extensions = {
-            --         file_browser = {
-            --             respect_gitignore = false,
-            --             hijack_netrw = true,
-            --             hidden = true,
-            --         },
-            --     },
-            -- }
-            -- require("telescope").setup(opts)
-            -- require("telescope").load_extension("file_browser")
+            local opts = {
+                extensions = {
+                    file_browser = {
+                        respect_gitignore = false,
+                        hijack_netrw = true,
+                        hidden = true,
+                    },
+                },
+            }
+            require("telescope").setup(opts)
+            require("telescope").load_extension("file_browser")
             require("telescope").load_extension("terraform_doc")
             require("telescope").load_extension("terraform")
         end,

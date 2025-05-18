@@ -1,7 +1,7 @@
 return {
     "mason-org/mason.nvim",
-    keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
-    build = ":MasonUpdate",
+    -- keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
+    -- build = ":MasonUpdate",
     opts_extend = { "ensure_installed" },
     opts = {
         ensure_installed = {
@@ -9,6 +9,7 @@ return {
             "dockerfile-language-server",
             "docker-compose-language-service",
             "lua-language-server",
+            "css-lsp",
             -- c#
             "omnisharp",
             -- "csharp-language-server",
@@ -24,6 +25,11 @@ return {
             "marksman",
             "markdownlint-cli2",
             -- "mermaid-cli",
+            -- bash
+            "bash-language-server",
+            "shellcheck",
+            "shellharden",
+            "shfmt",
             -- go
             "gopls",
             "goimports",

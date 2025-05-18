@@ -2,6 +2,7 @@
 vim.lsp.enable(
     {
         'azure-pipelines-ls',
+        'bashls', 
         'gopls',
         'luals',
         'terraform-ls',
@@ -14,7 +15,7 @@ vim.lsp.enable(
         'nix',
         "omnisharp",
         "zls",
-        "css",
+        "cssls",
     }
 )
 
