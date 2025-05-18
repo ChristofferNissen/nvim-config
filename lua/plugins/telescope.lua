@@ -97,7 +97,7 @@ return {
                 extensions = {
                     file_browser = {
                         respect_gitignore = false,
-                        hijack_netrw = true,
+                        hijack_netrw = false,
                         hidden = true,
                     },
                 },
