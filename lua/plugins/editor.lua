@@ -5,6 +5,10 @@ return {
         version = false, -- last release is way too old
     },
     {
+        'towolf/vim-helm',
+        ft = 'helm'
+    },
+    {
         "folke/todo-comments.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
         opts = {}
