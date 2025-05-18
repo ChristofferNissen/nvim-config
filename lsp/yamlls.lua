@@ -29,7 +29,7 @@ return {
                 ["https://raw.githubusercontent.com/argoproj/argo-workflows/master/api/jsonschema/schema.json"] =
                 "*flow*.{yml,yaml}",
                 kubernetes = "*.yaml",
-                require("schemastore").yaml.schemas(),
+                -- require("schemastore").yaml.schemas(),
             },
             schemaStore = {
                 -- Must disable built-in schemaStore support to use

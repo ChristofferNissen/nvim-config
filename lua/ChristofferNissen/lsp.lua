@@ -2,7 +2,7 @@
 vim.lsp.enable(
     {
         'azure-pipelines-ls',
-        'bashls', 
+        'bashls',
         'gopls',
         'luals',
         'terraform-ls',
@@ -65,6 +65,28 @@ vim.api.nvim_create_autocmd('LspAttach', {
         end
     end,
 })
+
+local lsp_enabled = true
+
+function ToggleAzurePipelinesLSP()
+    if lsp_enabled then
+        -- Stop all clients named 'azure-pipelines-ls'
+        for _, client in pairs(vim.lsp.get_clients()) do
+            if client.name == "azure-pipelines-ls" then
+                client:stop()
+            end
+        end
+        lsp_enabled = false
+        vim.notify("azure-pipelines-ls disabled")
+    else
+        -- Re-enable: reload buffer to trigger LSP setup
+        lsp_enabled = true
+        vim.cmd("edit") -- reloads buffer, may retrigger LSP setup
+        vim.notify("azure-pipelines-ls enabled")
+    end
+end
+
+vim.keymap.set("n", "<leader>ta", ToggleAzurePipelinesLSP, { desc = "Toggle azure-pipelines-ls" })
 
 -- enable completion triggered by <C-Space>
 -- vim.api.nvim_create_autocmd('LspAttach', {
