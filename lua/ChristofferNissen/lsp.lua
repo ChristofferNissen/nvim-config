@@ -12,6 +12,7 @@ vim.lsp.enable(
         'marksman',
         'gleam',
         'dockerls',
+        'gh-actions-language-server',
         'docker_compose',
         'nix',
         "omnisharp",
