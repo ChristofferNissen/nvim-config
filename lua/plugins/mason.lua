@@ -15,7 +15,7 @@ return {
             "css-lsp",
             "helm-ls",
             -- c#
-            "omnisharp",
+            -- "omnisharp",
             -- "csharp-language-server",
             "csharpier",
             "netcoredbg",
