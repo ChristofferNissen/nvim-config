@@ -56,6 +56,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
 vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(args)
         local client = vim.lsp.get_client_by_id(args.data.client_id)
+        if client == nil then
+            return
+        end
 
         if client:supports_method('textDocument/formatting') then
             vim.api.nvim_create_autocmd('BufWritePre', {
@@ -90,29 +93,41 @@ end
 
 vim.keymap.set("n", "<leader>ta", ToggleAzurePipelinesLSP, { desc = "Toggle azure-pipelines-ls" })
 
--- enable completion triggered by <C-Space>
--- vim.api.nvim_create_autocmd('LspAttach', {
---   callback = function(args)
---     local client = vim.lsp.get_client_by_id(args.data.client_id)
---
---     if client:supports_method('textDocument/completion') then
---       vim.lsp.completion.enable(true, client.id, args.buf, {autotrigger = true})
---     end
---   end,
--- })
+-- YamlShowSchema
+local function extract_schema_from_hover(text)
+    -- Match the first line that starts with one or more '#' and a space, then capture the rest
+    local schema = text:match("^#+%s*(.-)\n")
+    if schema and #schema > 0 then
+        return schema
+    end
+    return ""
+end
 
--- example of global config
--- vim.lsp.config('*', {
---     on_init = function()
---         print('this will be everywhere')
---     end,
--- })
-
--- example of ls specitic config
--- vim.lsp.config('luals', {
---     on_attach = function()
---         print('luals is now active in this file')
---     end,
--- })
-
--- https://lsp-zero.netlify.app/blog/lsp-client-features.html
+vim.api.nvim_create_user_command('YamlShowSchema', function()
+    vim.lsp.buf_request(0, "textDocument/hover", {
+        textDocument = vim.lsp.util.make_text_document_params(),
+        position = { line = 0, character = 0 }
+    }, function(_, result)
+        if not result or not result.contents then
+            vim.notify("No schema found in hover", vim.log.levels.DEBUG)
+            return
+        end
+        local contents = result.contents
+        local text = ""
+        if type(contents) == "table" then
+            if contents.value then
+                text = contents.value
+            elseif contents[1] then
+                text = contents[1].value or contents[1]
+            end
+        elseif type(contents) == "string" then
+            text = contents
+        end
+        local schema = extract_schema_from_hover(text)
+        if schema ~= "" then
+            vim.notify("Current YAML schema: " .. schema, vim.log.levels.INFO)
+        else
+            vim.notify("No schema found in hover", vim.log.levels.WARN)
+        end
+    end)
+end, {})
