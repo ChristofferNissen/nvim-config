@@ -4,6 +4,7 @@ vim.lsp.enable(
         'azure-pipelines-ls',
         'bashls',
         'gopls',
+        "helm-ls",
         'luals',
         'terraform-ls',
         'yamlls',

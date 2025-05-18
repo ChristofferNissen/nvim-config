@@ -5,11 +5,15 @@ return {
     opts_extend = { "ensure_installed" },
     opts = {
         ensure_installed = {
+            "black",
+            "gh",
+            "gh-actions-language-server",
             "yaml-language-server",
             "dockerfile-language-server",
             "docker-compose-language-service",
             "lua-language-server",
             "css-lsp",
+            "helm-ls",
             -- c#
             "omnisharp",
             -- "csharp-language-server",
