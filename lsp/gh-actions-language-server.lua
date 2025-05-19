@@ -1,7 +1,7 @@
 ---@type vim.lsp.Config
 return {
     -- Optional: specify the command if not in PATH
-    -- cmd = {"/path/to/gh-actions-language-server", "stdio"},
+    cmd = { "gh-actions-language-server", "--stdio" },
     -- Optional: custom filetypes
     filetypes = { "yaml", "github-actions" },
     -- Optional: root directory logic
