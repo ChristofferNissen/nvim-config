@@ -7,7 +7,7 @@ vim.lsp.enable(
         "cssls",
         'docker_compose',
         'dockerls',
-        'gh-actions-language-server',
+        -- 'gh-actions-language-server',
         'gleam',
         'gopls',
         "helm-ls",
