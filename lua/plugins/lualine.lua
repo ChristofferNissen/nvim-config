@@ -7,19 +7,16 @@ go_package = function()
     return ""
 end
 
--- Autocommand to update schema info for YAML files
-vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost" }, {
-    pattern = { "*.yaml", "*.yml" },
-    callback = function(args)
-        local bufnr = args.buf
-        local filetype = vim.bo[bufnr].filetype
-        if filetype ~= "yaml" and filetype ~= "yml" then
-            return
-        end
+-- Cache table for storing schema per buffer
+local yaml_schema_cache = {}
 
+-- Function to asynchronously update YAML schema (with delay)
+local function update_yaml_schema(bufnr)
+    vim.defer_fn(function()
         -- Only run if an LSP client is attached
         local clients = vim.lsp.get_clients({ bufnr = bufnr })
         if #clients == 0 then
+            yaml_schema_cache[bufnr] = "lsp not started"
             vim.b[bufnr].yaml_schema_lualine = "lsp not started"
             return
         end
@@ -29,44 +26,47 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost" }, {
             textDocument = vim.lsp.util.make_text_document_params(bufnr),
             position = { line = 0, character = 0 },
         }, function(_, result)
-            if not result or not result.contents then
-                vim.b[bufnr].yaml_schema_lualine = ""
-                return
-            end
-
-            -- Parse result to extract schema info (customize as needed)
-            local contents = result.contents
             local text = ""
-            if type(contents) == "table" then
-                if contents.value then
-                    text = contents.value
-                elseif contents[1] then
-                    text = contents[1].value or contents[1]
+            if result and result.contents then
+                local contents = result.contents
+                if type(contents) == "table" then
+                    if contents.value then
+                        text = contents.value
+                    elseif contents[1] then
+                        text = contents[1].value or contents[1]
+                    end
+                elseif type(contents) == "string" then
+                    text = contents
                 end
-            elseif type(contents) == "string" then
-                text = contents
             end
 
-            local name = text:match("%s*#+%s*([^\n]+)")
-            if not name then
-                name = text
-            end
-            -- vim.notify("Name: " .. name)
-            vim.b[bufnr].yaml_schema_lualine = name or ""
+            local name = text:match("%s*#+%s*([^\n]+)") or text or ""
+            yaml_schema_cache[bufnr] = name
+            vim.b[bufnr].yaml_schema_lualine = name
 
-            -- Try to extract a schema URL or give a preview
-            -- local schema = text:match("https?://%S+%.json")
-            -- if not schema then
-            --     schema = text:sub(1, 40)
-            -- end
-            -- vim.b[bufnr].yaml_schema_lualine = schema or ""
+            -- Optionally force statusline redraw
+            vim.cmd("redrawstatus")
         end)
+    end, 1000) -- Delay (ms)
+end
+
+-- Autocommand to update schema info for YAML files
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost" }, {
+    pattern = { "*.yaml", "*.yml" },
+    callback = function(args)
+        local bufnr = args.buf
+        local filetype = vim.bo[bufnr].filetype
+        if filetype ~= "yaml" and filetype ~= "yml" then
+            return
+        end
+        update_yaml_schema(bufnr)
     end,
 })
 
 -- Lualine component
 local function yaml_schema_component()
-    return vim.b.yaml_schema_lualine or ""
+    local bufnr = vim.api.nvim_get_current_buf()
+    return yaml_schema_cache[bufnr] or ""
 end
 
 return {

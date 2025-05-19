@@ -3,7 +3,7 @@ return {
     -- Optional: specify the command if not in PATH
     cmd = { "gh-actions-language-server", "--stdio" },
     -- Optional: custom filetypes
-    filetypes = { "yaml", "github-actions" },
+    filetypes = { "github-actions" },
     -- Optional: root directory logic
     root_markers = { '.github/workflows', '.git' },
     -- Optional: any custom settings
