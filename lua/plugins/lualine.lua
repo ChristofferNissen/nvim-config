@@ -56,6 +56,7 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost" }, {
     callback = function(args)
         local bufnr = args.buf
         local filetype = vim.bo[bufnr].filetype
+        -- vim.notify("Updating YAML schema for " .. vim.fn.expand("%:t"), vim.log.levels.INFO, { title = "LSP" })
         if filetype ~= "yaml" and filetype ~= "yml" then
             return
         end

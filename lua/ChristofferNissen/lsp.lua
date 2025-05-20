@@ -1,13 +1,13 @@
 -- LSP configs in lsp/
 vim.lsp.enable(
     {
-        'azure-pipelines-ls',
+        -- 'azure-pipelines-ls',
         'bashls',
         'csharp-ls',
         "cssls",
         'docker_compose',
         'dockerls',
-        -- 'gh-actions-language-server',
+        'gh-actions-language-server',
         'gleam',
         'gopls',
         "helm-ls",

@@ -44,10 +44,11 @@ return {
             -- vim.api.nvim_set_hl(0, "QuickScopeSecondary", { underline = true, fg = "#8be9fd" }) -- cyan
         end
     },
-    {
-        "m4xshen/hardtime.nvim",
-        lazy = false,
-        dependencies = { "MunifTanjim/nui.nvim" },
-        opts = {},
-    },
+    -- {
+    --     "m4xshen/hardtime.nvim",
+    --     lazy = false,
+    --     dependencies = { "MunifTanjim/nui.nvim" },
+    --     opts = {
+    --     },
+    -- },
 }
