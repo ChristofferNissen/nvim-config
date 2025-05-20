@@ -1,7 +1,7 @@
 -- LSP configs in lsp/
 vim.lsp.enable(
     {
-        -- 'azure-pipelines-ls',
+        'azure-pipelines-ls',
         'bashls',
         'csharp-ls',
         "cssls",
