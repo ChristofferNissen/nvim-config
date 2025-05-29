@@ -17,6 +17,7 @@ vim.lsp.enable(
         'nix',
         -- "omnisharp",
         'rust_analyzer',
+        'snyk-ls',
         'terraform-ls',
         'yamlls',
         "zls",

@@ -9,12 +9,22 @@ return {
             "gh",
             "gh-actions-language-server",
             "yaml-language-server",
+            "yamlfix",
+            "yamlfmt",
+            "yamllint",
+            "yq",
             "dockerfile-language-server",
             "docker-compose-language-service",
             "lua-language-server",
             "css-lsp",
             "helm-ls",
             "harper-ls",
+            "snyk",
+            "snyk-ls",
+            -- nix
+            "nixfmt",
+            "nixpkgs-fmt",
+            "nil",
             -- c#
             -- "omnisharp",
             "csharp-language-server",
@@ -22,6 +32,7 @@ return {
             "netcoredbg",
             "azure-pipelines-language-server",
             -- terraform
+            "terraform",
             "terraform-ls",
             "tflint",
             -- zig
@@ -41,6 +52,9 @@ return {
             "gofumpt",
             "gomodifytags",
             "impl",
+            -- rust
+            "bacon",
+            "bacon-ls",
         }
     },
     ---@param opts MasonSettings | {ensure_installed: string[]}
