@@ -10,6 +10,7 @@ vim.lsp.enable(
         'gh-actions-language-server',
         'gleam',
         'gopls',
+        'harper-ls',
         "helm-ls",
         'luals',
         'marksman',

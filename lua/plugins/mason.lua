@@ -14,6 +14,7 @@ return {
             "lua-language-server",
             "css-lsp",
             "helm-ls",
+            "harper-ls",
             -- c#
             -- "omnisharp",
             "csharp-language-server",
