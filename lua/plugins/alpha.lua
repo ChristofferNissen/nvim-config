@@ -21,6 +21,7 @@ return {
             dashboard.button("c", " " .. " Config", ":e $MYVIMRC <CR>"),
             dashboard.button("s", " " .. " Restore Session", [[:lua require("persistence").load() <cr>]]),
             dashboard.button("l", "󰒲 " .. " Lazy", [[:lua vim.cmd("Lazy") <cr>]]),
+            dashboard.button("m", "۞" .. " Mason", [[:lua vim.cmd("Mason") <cr>]]),
             dashboard.button("q", " " .. " Quit", ":qa<CR>"),
         }
         for _, button in ipairs(dashboard.section.buttons.val) do
