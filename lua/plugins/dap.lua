@@ -143,9 +143,9 @@ return {
             dap.configurations = {
                 go = {
                     {
-                        type = "go",            -- Which adapter to use
+                        type = "go", -- Which adapter to use
                         name = "Debug go file", -- Human readable name
-                        request = "launch",     -- Whether to "launch" or "attach" to program
+                        request = "launch", -- Whether to "launch" or "attach" to program
                         program = "${file}",
                     },
                 },
@@ -191,5 +191,5 @@ return {
                 },
             },
         },
-    }
+    },
 }
