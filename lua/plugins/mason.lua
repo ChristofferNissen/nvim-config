@@ -4,6 +4,10 @@ return {
     -- build = ":MasonUpdate",
     opts_extend = { "ensure_installed" },
     opts = {
+        registries = {
+            "github:mason-org/mason-registry",
+            "github:Crashdummyy/mason-registry",
+        },
         ensure_installed = {
             "css-lsp",
             "harper-ls",
@@ -39,6 +43,8 @@ return {
             "nil",
             -- c#
             "clang-format",
+            "roslyn",
+            "rzls",
             -- "omnisharp",
             "csharp-language-server",
             "csharpier",
@@ -77,7 +83,7 @@ return {
             "rust-analyzer",
             "bacon",
             "bacon-ls",
-        }
+        },
     },
     ---@param opts MasonSettings | {ensure_installed: string[]}
     config = function(_, opts)

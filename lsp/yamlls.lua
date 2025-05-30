@@ -1,21 +1,21 @@
-local schemastore_schemas = require("schemastore").yaml.schemas {
+local schemastore_schemas = require("schemastore").yaml.schemas({
     select = {
-        'Azure Pipelines',
-        'Argo Workflows',
-        'Argo Events',
-        'GitHub Action',
-        'GitHub Workflow',
-        'Taskfile config',
-        'kustomization.yaml',
-        'docker-compose.yml',
-        'openapi.json',
-        'gitlab-ci',
-        'dependabot-v2.json',
-        'Helm Chart.yaml',
-        'Helm Chart.lock',
-        'prettierrc.json',
-    }
-}
+        "Azure Pipelines",
+        "Argo Workflows",
+        "Argo Events",
+        "GitHub Action",
+        "GitHub Workflow",
+        "Taskfile config",
+        "kustomization.yaml",
+        "docker-compose.yml",
+        "openapi.json",
+        "gitlab-ci",
+        "dependabot-v2.json",
+        "Helm Chart.yaml",
+        "Helm Chart.lock",
+        "prettierrc.json",
+    },
+})
 
 local custom_schemas = {
     kubernetes = { "deploy/**/*.yaml", "deploy/**/*.yml" },
@@ -23,8 +23,12 @@ local custom_schemas = {
 
 local function merge_tables(t1, t2)
     local result = {}
-    for k, v in pairs(t1) do result[k] = v end
-    for k, v in pairs(t2) do result[k] = v end
+    for k, v in pairs(t1) do
+        result[k] = v
+    end
+    for k, v in pairs(t2) do
+        result[k] = v
+    end
     return result
 end
 

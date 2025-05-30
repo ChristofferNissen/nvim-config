@@ -1,31 +1,28 @@
 -- LSP configs in lsp/
-vim.lsp.enable(
-    {
-        'azure-pipelines-ls',
-        'bashls',
-        'csharp-ls',
-        "cssls",
-        'docker_compose',
-        'dockerls',
-        'gh-actions-language-server',
-        'gleam',
-        'gopls',
-        'harper-ls',
-        "helm-ls",
-        'luals',
-        'marksman',
-        'nix',
-        -- "omnisharp",
-        'rust_analyzer',
-        'snyk-ls',
-        'terraform-ls',
-        'yamlls',
-        "zls",
-    }
-)
+vim.lsp.enable({
+    "azure-pipelines-ls",
+    "bashls",
+    "cssls",
+    "docker_compose",
+    "dockerls",
+    "gh-actions-language-server",
+    "gleam",
+    "gopls",
+    -- "harper-ls",
+    "helm-ls",
+    "luals",
+    "marksman",
+    "nix",
+    -- "roslyn",
+    "rust_analyzer",
+    -- "snyk-ls",
+    "terraform-ls",
+    "yamlls",
+    "zls",
+})
 
 -- set keymaps for LSP
-vim.api.nvim_create_autocmd('LspAttach', {
+vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(event)
         local opts = { buffer = event.buf }
 
@@ -47,24 +44,24 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
         -- beta
         -- vim.keymap.set('n', '<C-Space>', '<C-x><C-o>', opts)
-        vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
-        vim.keymap.set({ 'n', 'x' }, 'gq', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
+        vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
+        vim.keymap.set({ "n", "x" }, "gq", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", opts)
 
-        vim.keymap.set('n', 'grt', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
-        vim.keymap.set('n', 'grd', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
+        vim.keymap.set("n", "grt", "<cmd>lua vim.lsp.buf.type_definition()<cr>", opts)
+        vim.keymap.set("n", "grd", "<cmd>lua vim.lsp.buf.declaration()<cr>", opts)
     end,
 })
 
 -- format on save
-vim.api.nvim_create_autocmd('LspAttach', {
+vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(args)
         local client = vim.lsp.get_client_by_id(args.data.client_id)
         if client == nil then
             return
         end
 
-        if client:supports_method('textDocument/formatting') then
-            vim.api.nvim_create_autocmd('BufWritePre', {
+        if client:supports_method("textDocument/formatting") then
+            vim.api.nvim_create_autocmd("BufWritePre", {
                 buffer = args.buf,
                 callback = function()
                     vim.lsp.buf.format({ bufnr = args.buf, id = client.id })
@@ -106,10 +103,10 @@ local function extract_schema_from_hover(text)
     return ""
 end
 
-vim.api.nvim_create_user_command('YamlShowSchema', function()
+vim.api.nvim_create_user_command("YamlShowSchema", function()
     vim.lsp.buf_request(0, "textDocument/hover", {
         textDocument = vim.lsp.util.make_text_document_params(),
-        position = { line = 0, character = 0 }
+        position = { line = 0, character = 0 },
     }, function(_, result)
         if not result or not result.contents then
             vim.notify("No schema found in hover", vim.log.levels.DEBUG)
