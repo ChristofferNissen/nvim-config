@@ -5,7 +5,11 @@ return {
     opts_extend = { "ensure_installed" },
     opts = {
         ensure_installed = {
+            "css-lsp",
+            "harper-ls",
+            -- python
             "black",
+            -- yaml
             "gh",
             "gh-actions-language-server",
             "yaml-language-server",
@@ -13,19 +17,28 @@ return {
             "yamlfmt",
             "yamllint",
             "yq",
+            -- json
+            "jq",
+            "jq-lsp",
+            -- docker
             "dockerfile-language-server",
             "docker-compose-language-service",
-            "lua-language-server",
-            "css-lsp",
-            "helm-ls",
-            "harper-ls",
+            "hadolint",
             "snyk",
             "snyk-ls",
+            -- lua
+            "lua-language-server",
+            "luacheck",
+            "stylua",
+            -- kubernetes
+            "kube-linter",
+            "helm-ls",
             -- nix
             "nixfmt",
             "nixpkgs-fmt",
             "nil",
             -- c#
+            "clang-format",
             -- "omnisharp",
             "csharp-language-server",
             "csharpier",
@@ -35,24 +48,33 @@ return {
             "terraform",
             "terraform-ls",
             "tflint",
+            "tfsec",
             -- zig
             "zls",
             -- markdown
             "marksman",
             "markdownlint-cli2",
+            "mdx-analyzer",
             -- "mermaid-cli",
+            "powershell-editor-services",
             -- bash
+            "bash-debug-adapter",
             "bash-language-server",
+            "beautysh",
             "shellcheck",
             "shellharden",
             "shfmt",
+            "dotenv-linter",
+            "gitui",
             -- go
             "gopls",
             "goimports",
             "gofumpt",
             "gomodifytags",
             "impl",
+            "golangci-lint",
             -- rust
+            "rust-analyzer",
             "bacon",
             "bacon-ls",
         }

@@ -5,13 +5,13 @@ return {
         version = false, -- last release is way too old
     },
     {
-        'towolf/vim-helm',
-        ft = 'helm'
+        "towolf/vim-helm",
+        ft = "helm",
     },
     {
         "folke/todo-comments.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
-        opts = {}
+        opts = {},
     },
     {
         "numToStr/Comment.nvim",
@@ -74,12 +74,106 @@ return {
     },
     {
         "mfussenegger/nvim-lint",
-        optional = true,
-        opts = {
-            linters_by_ft = {
-                terraform = { "terraform_validate" },
-                tf = { "terraform_validate" },
+        config = function()
+            require("lint").linters_by_ft = {
+                python = { "flake8", "mypy" },
+                lua = { "luacheck" },
+                -- add more filetypes and linters as needed
+                terraform = { "tflint", "tfsec", "terraform_validate" },
+                markdown = { "markdownlint-cli2" },
+                sh = { "shellcheck", "shfmt", "shellharden", "beautysh" },
+                bash = { "shellcheck", "shfmt", "shellharden", "beautysh" },
+                go = { "golangci_lint" },
+                yaml = { "yamllint", "yamlfix" },
+                dockerfile = { "hadolint" },
+                helm = { "kube-linter" }, -- or helm_lint
+                dotenv = { "dotenv-linter" },
+            }
+            -- Optionally set up an autocommand for linting on save
+            vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+                callback = function()
+                    require("lint").try_lint()
+                end,
+            })
+        end,
+    },
+    {
+        "stevearc/conform.nvim",
+        event = { "BufWritePre" },
+        cmd = { "ConformInfo" },
+        keys = {
+            {
+                -- Customize or remove this keymap to your liking
+                "<leader>f",
+                function()
+                    require("conform").format({ async = true })
+                end,
+                mode = "",
+                desc = "Format buffer",
             },
         },
+        -- This will provide type hinting with LuaLS
+        ---@module "conform"
+        ---@type conform.setupOpts
+        opts = {
+            -- Define your formatters
+            formatters_by_ft = {
+                -- Python
+                python = { "black" },
+
+                -- Shell (sh, bash, zsh)
+                sh = { "shfmt", "shellharden", "beautysh" },
+                bash = { "shfmt", "shellharden", "beautysh" },
+                zsh = { "shfmt", "shellharden", "beautysh" },
+
+                -- Go
+                go = { "gofumpt", "goimports", "golangci-lint" },
+
+                -- C, C++, Objective-C
+                c = { "clang-format" },
+                cpp = { "clang-format" },
+                objc = { "clang-format" },
+
+                -- C#
+                cs = { "csharpier" },
+
+                -- JSON
+                json = { "jq" },
+
+                -- Markdown
+                markdown = { "markdownlint-cli2" },
+
+                -- Nix
+                nix = { "nixfmt", "nixpkgs_fmt" },
+
+                -- Lua
+                lua = { "stylua" },
+
+                -- Terraform
+                terraform = { "terraform_fmt" },
+
+                -- YAML
+                yaml = { "yamlfmt", "yamlfix" },
+
+                -- Zig
+                zig = { "zigfmt" },
+            },
+            -- Set default options
+            default_format_opts = {
+                lsp_format = "fallback",
+            },
+            -- Set up format-on-save
+            format_on_save = { timeout_ms = 500 },
+            -- Customize formatters
+            formatters = {
+                shfmt = {
+                    prepend_args = { "-i", "2" },
+                },
+            },
+        },
+        init = function()
+            -- If you want the formatexpr, here is the place to set it
+            vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+        end,
     },
 }
