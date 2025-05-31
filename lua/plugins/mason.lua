@@ -46,7 +46,7 @@ return {
             "roslyn",
             "rzls",
             -- "omnisharp",
-            "csharp-language-server",
+            -- "csharp-language-server",
             -- "csharpier",
             "netcoredbg",
             "azure-pipelines-language-server",

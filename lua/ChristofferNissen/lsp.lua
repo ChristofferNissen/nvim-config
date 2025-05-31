@@ -13,7 +13,6 @@ vim.lsp.enable({
     "luals",
     "marksman",
     "nix",
-    "roslyn",
     "rust_analyzer",
     -- "snyk-ls",
     "terraform-ls",
