@@ -33,7 +33,6 @@ return {
                 "yaml",
                 "c",
                 "c_sharp",
-                "csharp",
                 "dockerfile",
                 "dot",
                 "hyprlang",
@@ -43,7 +42,7 @@ return {
                 "ron",
                 "diff",
                 "bash",
-                "regex"
+                "regex",
             },
             highlight = {
                 -- `false` will disable the whole extension
