@@ -47,7 +47,7 @@ return {
             "rzls",
             -- "omnisharp",
             "csharp-language-server",
-            "csharpier",
+            -- "csharpier",
             "netcoredbg",
             "azure-pipelines-language-server",
             -- terraform

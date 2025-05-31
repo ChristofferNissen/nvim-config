@@ -33,6 +33,7 @@ return {
                 "yaml",
                 "c",
                 "c_sharp",
+                "csharp",
                 "dockerfile",
                 "dot",
                 "hyprlang",
