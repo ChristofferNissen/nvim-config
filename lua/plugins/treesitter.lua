@@ -1,19 +1,21 @@
 return {
     {
-        "Afourcat/treesitter-terraform-doc.nvim",
-        event = { "BufReadPost", "BufNewFile" },
-        config = function()
-            require("treesitter-terraform-doc").setup({
-                command_name = "OpenDoc",
-                url_opener_command = "!firefox", -- "!w3m", -- or your preferred browser command
-                jump_argument = true,
-            })
-        end,
-    },
-    {
         "nvim-treesitter/nvim-treesitter",
         event = { "BufReadPost", "BufNewFile" },
         main = "nvim-treesitter.configs",
+        dependencies = {
+            {
+                "Afourcat/treesitter-terraform-doc.nvim",
+                event = { "BufReadPost", "BufNewFile" },
+                config = function()
+                    require("treesitter-terraform-doc").setup({
+                        command_name = "OpenDoc",
+                        url_opener_command = "!firefox", -- "!w3m", -- or your preferred browser command
+                        jump_argument = true,
+                    })
+                end,
+            },
+        },
         opts = {
             autotag = {
                 enable = true,

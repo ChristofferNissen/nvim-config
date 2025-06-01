@@ -2,6 +2,7 @@ return {
     "mason-org/mason.nvim",
     -- keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
     -- build = ":MasonUpdate",
+    event = "VeryLazy",
     opts_extend = { "ensure_installed" },
     opts = {
         registries = {

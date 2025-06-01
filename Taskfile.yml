@@ -2,13 +2,60 @@ version: "3"
 
 tasks:
   symlink:
-    cmds:
-      - rm ~/.config/local
-      - ln -s ~/configs/lazyvim-config ~/.config/local
+    cmds: [rm ~/.config/local, ln -s ~/code/lazyvim-config ~/.config/local]
   test:
-    deps:
-      - symlink
-    cmds:
-      - NVIM_APPNAME=local nvim .
+    deps: [symlink]
+    cmds: [NVIM_APPNAME=local nvim .]
     silent: true
+    interactive: false
+  symlink_except:
+    desc: "Symlink all files from source_dir to target_dir except those in exclude_list"
+    silent: true
+    interactive: false
+    vars:
+      source_dir: "$HOME/code/lazyvim-config"
+      target_dir: "$HOME/.config/min"
+      exclude_list: ".tasks/exclude.txt"
+    cmds:
+      - |
+        #!/usr/bin/env bash
+        set -euo pipefail
+
+        SOURCE_DIR={{.source_dir}}
+        TARGET_DIR={{.target_dir}}
+        EXCLUDE_LIST={{.exclude_list}}
+
+        if [[ -z "$SOURCE_DIR" || -z "$TARGET_DIR" || -z "$EXCLUDE_LIST" ]]; then
+          echo "ERROR: You must provide source_dir, target_dir, and exclude_list variables."
+          exit 1
+        fi
+
+        mapfile -t EXCLUDES < "$EXCLUDE_LIST"
+        cd "$SOURCE_DIR"
+
+        is_excluded() {
+          local file="$1"
+          for exclude in "${EXCLUDES[@]}"; do
+            [[ "$file" == "$exclude" ]] && return 0
+          done
+          return 1
+        }
+
+        find . -type f | while read -r file; do
+          rel_file="${file#./}"
+          if is_excluded "$rel_file"; then
+            echo "Excluding $rel_file"
+            continue
+          fi
+          mkdir -p "$TARGET_DIR/$(dirname "$rel_file")"
+          ln -sf "$SOURCE_DIR/$rel_file" "$TARGET_DIR/$rel_file"
+        done
+  setup_min_config:
+    desc: "Set up ~/.config/min using symlink_except"
+    deps: [symlink_except]
+    cmds: []
+  test-min:
+    deps: [setup_min_config]
+    cmds: [NVIM_APPNAME=min nvim .]
+    # silent: true
     interactive: false

@@ -1,2 +1,3 @@
 lazyvim.json
 lazy-vim.lock
+testFiles/*

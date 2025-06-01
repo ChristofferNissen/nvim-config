@@ -1,6 +1,7 @@
 return {
     {
         "mfussenegger/nvim-lint",
+        event = { "BufWritePre" },
         config = function()
             local locator = require("kube_linter_yaml_locator")
 
