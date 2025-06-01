@@ -18,6 +18,10 @@ return {
 				},
 			},
 			{
+				"nvim-telescope/telescope-ui-select.nvim",
+				event = "VeryLazy",
+			},
+			{
 				"ANGkeith/telescope-terraform-doc.nvim",
 				event = "VeryLazy",
 				dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
@@ -111,6 +115,7 @@ return {
 			require("telescope").load_extension("file_browser")
 			require("telescope").load_extension("terraform_doc")
 			require("telescope").load_extension("terraform")
+			require("telescope").load_extension("ui-select")
 		end,
 	},
 }
