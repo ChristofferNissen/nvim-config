@@ -21,6 +21,7 @@ return {
 				"nvim-telescope/telescope-ui-select.nvim",
 				event = "VeryLazy",
 			},
+			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 			{
 				"ANGkeith/telescope-terraform-doc.nvim",
 				event = "VeryLazy",
@@ -116,6 +117,7 @@ return {
 			require("telescope").load_extension("terraform_doc")
 			require("telescope").load_extension("terraform")
 			require("telescope").load_extension("ui-select")
+			require("telescope").load_extension("fzf")
 		end,
 	},
 }
