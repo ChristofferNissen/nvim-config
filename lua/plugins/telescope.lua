@@ -21,6 +21,10 @@ return {
                 "nvim-telescope/telescope-ui-select.nvim",
                 event = "VeryLazy",
             },
+            {
+                "benfowler/telescope-luasnip.nvim",
+                event = "VeryLazy",
+            },
             { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
             {
                 "ANGkeith/telescope-terraform-doc.nvim",
@@ -55,6 +59,14 @@ return {
                     require("telescope.builtin").live_grep()
                 end,
                 desc = "telescope grep string"
+            },
+            {
+                "<leader>pa",
+                mode = "n",
+                function()
+                    require 'telescope'.extensions.luasnip.luasnip()
+                end,
+                desc = "telescope snippets"
             },
             -- {
             --     "<leader>pt",
@@ -103,6 +115,7 @@ return {
             }
         },
         config = function()
+            local themes = require("telescope.themes")
             local opts = {
                 extensions = {
                     file_browser = {
@@ -110,6 +123,12 @@ return {
                         hijack_netrw = true,
                         hidden = true,
                     },
+                    luasnip = themes.get_dropdown({
+                        -- border = false,
+                        preview = {
+                            check_mime_type = true,
+                        },
+                    }),
                 },
             }
             require("telescope").setup(opts)
@@ -118,6 +137,7 @@ return {
             require("telescope").load_extension("terraform")
             require("telescope").load_extension("ui-select")
             require("telescope").load_extension("fzf")
+            require("telescope").load_extension("luasnip")
         end,
     },
 }
