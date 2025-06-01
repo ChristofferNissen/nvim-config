@@ -43,3 +43,8 @@ vim.opt.listchars:append("space:.")
 vim.opt.listchars:append("eol:󱞣")
 vim.o.timeout = true
 vim.o.timeoutlen = 1000
+
+-- folding https://www.jmaguire.tech/posts/treesitter_folding/
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldenable = false

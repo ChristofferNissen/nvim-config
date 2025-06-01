@@ -18,7 +18,7 @@ local schemastore_schemas = require("schemastore").yaml.schemas({
 })
 
 local custom_schemas = {
-    kubernetes = { "deploy/**/*.yaml", "deploy/**/*.yml" },
+    -- kubernetes = { "deploy/**/*.yaml", "deploy/**/*.yml" },
 }
 
 local function merge_tables(t1, t2)
