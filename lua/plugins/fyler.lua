@@ -1,7 +1,9 @@
 return {
     {
-        "A7Lavinraj/fyler.nvim",
+        "ChristofferNissen/fyler.nvim",
         dependencies = { "echasnovski/mini.icons" },
-        opts = {},
+        opts = {
+            hijack_netrw = true,
+        },
     },
 }
