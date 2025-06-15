@@ -33,6 +33,6 @@ vim.api.nvim_set_keymap("n", "<leader>do", ":OpenDoc<CR>", { noremap = true, sil
 -- vim.api.nvim_set_keymap('n', '<leader>e', ':Oil<CR>', { noremap = true, silent = true })
 
 -- Keybinding for Fyler-
-vim.keymap.set("n", "<leader>e", function()
-    require("fyler").show()
-end, { desc = "Open Fyler" })
+-- vim.keymap.set("n", "<leader>e", function()
+--     require("fyler").show()
+-- end, { desc = "Open Fyler" })
