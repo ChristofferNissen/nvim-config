@@ -12,5 +12,6 @@ return {
     ---@type neotree.Config?
     opts = {
         -- fill any relevant options here
+        vim.keymap.set("n", "<leader>e", "<Cmd>Neotree reveal<CR>"),
     },
 }
