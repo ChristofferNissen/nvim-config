@@ -2,7 +2,11 @@ version: "3"
 
 tasks:
   symlink:
-    cmds: [rm ~/.config/local, ln -s ~/code/lazyvim-config ~/.config/local]
+    cmds:
+      [
+        rm ~/.config/local || echo "folder does not exist",
+        ln -s ~/code/nvim-config ~/.config/local,
+      ]
   test:
     deps: [symlink]
     cmds: [NVIM_APPNAME=local nvim .]

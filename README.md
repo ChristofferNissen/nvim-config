@@ -19,4 +19,3 @@ You can check the health in the new config with:
 ```vim
 :checkhealth lazy
 ```
-
