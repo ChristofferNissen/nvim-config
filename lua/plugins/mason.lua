@@ -84,6 +84,7 @@ return {
             "rust-analyzer",
             "bacon",
             "bacon-ls",
+            "typescript-language-server",
         },
     },
     ---@param opts MasonSettings | {ensure_installed: string[]}

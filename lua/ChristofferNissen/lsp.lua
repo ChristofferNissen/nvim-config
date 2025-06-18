@@ -16,6 +16,7 @@ vim.lsp.enable({
     "rust_analyzer",
     -- "snyk-ls",
     "terraform-ls",
+    "typescript-language-server",
     "yamlls",
     "zls",
 })
