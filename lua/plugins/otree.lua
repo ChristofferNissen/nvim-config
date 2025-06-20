@@ -9,7 +9,7 @@ return {
         },
         config = function()
             require("Otree").setup()
-            vim.keymap.set("n", "<leader>t", "<Cmd>OtreeFocus<CR>")
+            vim.keymap.set("n", "<leader>t", "<Cmd>Otree<CR>")
         end,
     },
     {

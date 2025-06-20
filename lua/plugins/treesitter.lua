@@ -45,6 +45,16 @@ return {
                 "diff",
                 "bash",
                 "regex",
+                "json5",
+                "git_config",
+                "gitcommit",
+                "git_rebase",
+                "gitignore",
+                "gitattributes",
+                "ninja",
+                "rst",
+                "kotlin",
+                "java",
             },
             highlight = {
                 -- `false` will disable the whole extension

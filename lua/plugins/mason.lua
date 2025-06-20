@@ -25,6 +25,7 @@ return {
             -- json
             "jq",
             "jq-lsp",
+            "json-lsp",
             -- docker
             "dockerfile-language-server",
             "docker-compose-language-service",
@@ -84,7 +85,12 @@ return {
             "rust-analyzer",
             "bacon",
             "bacon-ls",
+            -- typescript
             "typescript-language-server",
+            -- java
+            "java-debug-adapter",
+            "java-test",
+            "ktlint",
         },
     },
     ---@param opts MasonSettings | {ensure_installed: string[]}
