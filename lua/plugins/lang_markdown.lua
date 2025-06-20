@@ -20,11 +20,13 @@ return {
     },
     {
         "MeanderingProgrammer/render-markdown.nvim",
-        dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
+        dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" },
         ---@module 'render-markdown'
         ---@type render.md.UserConfig
         -- opts = {},
         opts = {
+            completions = { lsp = { enabled = true } },
+            -- completions = { blink = { enabled = true } },
             code = {
                 sign = false,
                 width = "block",
