@@ -12,6 +12,7 @@ return {
         ensure_installed = {
             "css-lsp",
             "harper-ls",
+            "ast-grep",
             -- python
             "black",
             -- yaml
@@ -49,7 +50,7 @@ return {
             "rzls",
             -- "omnisharp",
             -- "csharp-language-server",
-            -- "csharpier",
+            "csharpier",
             "netcoredbg",
             "azure-pipelines-language-server",
             -- terraform
