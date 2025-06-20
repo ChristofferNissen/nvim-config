@@ -10,6 +10,7 @@ vim.lsp.enable({
     "gopls",
     -- "harper-ls",
     "helm-ls",
+    "jsonls",
     "luals",
     "marksman",
     "nix",
