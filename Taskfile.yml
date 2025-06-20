@@ -1,11 +1,15 @@
 version: "3"
 
+env:
+  # CONF_PATH: /home/cn/code/nvim-config
+  CONF_PATH: "/home/cn/configs/lazyvim-config"
+
 tasks:
   symlink:
     cmds:
       [
         rm ~/.config/local || echo "folder does not exist",
-        ln -s ~/code/nvim-config ~/.config/local,
+        ln -s $CONF_PATH ~/.config/local,
       ]
   test:
     deps: [symlink]
