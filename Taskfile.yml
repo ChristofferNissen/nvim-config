@@ -1,8 +1,9 @@
 version: "3"
 
 env:
-  # CONF_PATH: /home/cn/code/nvim-config
-  CONF_PATH: "/home/cn/configs/lazyvim-config"
+  # CONF_PATH: /home/cn/code/nvim-config # Linux
+  CONF_PATH: /Users/cn/code/nvim-config # MAC
+  # CONF_PATH: "/home/cn/configs/lazyvim-config" # WSL
 
 tasks:
   symlink:

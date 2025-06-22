@@ -48,3 +48,12 @@ vim.o.timeoutlen = 1000
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldenable = false
+
+-- custom filetypes
+vim.filetype.add({
+    pattern = {
+        ["release%-pipelines?%.ya?ml"] = "azure-pipelines",
+        ["azure%-pipelines?%.ya?ml"] = "azure-pipelines",
+        [".azure%-pipelines/.*%.ya?ml"] = "azure-pipelines",
+    },
+})
