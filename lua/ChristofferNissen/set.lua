@@ -52,21 +52,21 @@ vim.opt.foldenable = false
 -- custom filetypes
 vim.filetype.add({
     pattern = {
-        ["release%-pipelines?%.ya?ml"] = "azure-pipelines",
-        ["azure%-pipelines?%.ya?ml"] = "azure-pipelines",
-        [".azure%-pipelines/.*%.ya?ml"] = "azure-pipelines",
+        ["release%-pipelines?%.ya?ml"] = "azure_pipelines",
+        ["azure%-pipelines?%.ya?ml"] = "azure_pipelines",
+        [".azure%-pipelines/.*%.ya?ml"] = "azure_pipelines",
     },
 })
-vim.treesitter.language.register("yaml", "azure-pipelines")
+vim.treesitter.language.register("yaml", "azure_pipelines")
 
 -- vim.api.nvim_create_autocmd("BufReadPost", {
 --     pattern = { "azure-pipelines.yaml", "azure-pipelines.yml", "*.azure-pipelines/*.yml", "*.azure-pipelines/*.yaml" },
 --     callback = function()
---         vim.bo.filetype = "azure-pipelines"
+--         vim.bo.filetype = "azure_pipelines"
 --         vim.lsp.start({
 --             name = "azure-pipelines-ls",
 --             cmd = { "azure-pipelines-language-server", "--stdio" },
---             filetypes = { "azure-pipelines" },
+--             filetypes = { "azure_pipelines" },
 --             root_dir = vim.fs.dirname(vim.api.nvim_buf_get_name(0)),
 --         })
 --     end,

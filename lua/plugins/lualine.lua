@@ -91,6 +91,7 @@ return {
                     },
                     { "filename" },
                 },
+                -- lualine_x = { require("yaml_nvim").get_yaml_key_and_value },
                 lualine_x = {
                     { yaml_schema_component },
                     "encoding",

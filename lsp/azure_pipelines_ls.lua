@@ -7,7 +7,7 @@ local schemastore_schemas = require("schemastore").yaml.schemas({
 --@type vim.lsp.Config
 return {
     cmd = { "azure-pipelines-language-server", "--stdio" },
-    filetypes = { "azure-pipelines" },
+    filetypes = { "azure_pipelines" },
     -- filetypes = { "yaml" },
     single_file_support = true,
     -- settings = {},

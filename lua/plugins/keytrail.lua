@@ -5,8 +5,15 @@ return {
             "nvim-treesitter/nvim-treesitter",
             "nvim-telescope/telescope.nvim",
         },
-        config = function()
-            require("keytrail").setup()
+        opts = {
+            ft = {
+                json = true,
+                yaml = true,
+                azure_pipelines = true,
+            },
+        },
+        config = function(opts)
+            require("keytrail").setup(opts)
         end,
     },
 }
