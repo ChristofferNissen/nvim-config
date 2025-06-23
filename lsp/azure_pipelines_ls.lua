@@ -28,7 +28,12 @@ return {
             completions = true,
             validate = true,
             redhat = { telemetry = { enabled = false } },
-            schemas = schemastore_schemas,
+            -- schemas = schemastore_schemas,
+            schemas = {
+                ["https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/master/service-schema.json"] = {
+                    "*",
+                },
+            },
             schemaStore = {
                 -- Must disable built-in schemaStore support to use
                 -- schemas from SchemaStore.nvim plugin
