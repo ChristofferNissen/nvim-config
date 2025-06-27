@@ -17,17 +17,17 @@ return {
                 RepeatedWords = true,
                 Spaces = true,
                 Matcher = true,
-                CorrectNumberSuffix = true
+                CorrectNumberSuffix = true,
             },
             codeActions = {
-                ForceStable = false
+                ForceStable = false,
             },
             markdown = {
-                IgnoreLinkTitle = false
+                IgnoreLinkTitle = false,
             },
             diagnosticSeverity = "hint",
             isolateEnglish = false,
-            dialect = "American"
-        }
-    }
+            dialect = "American",
+        },
+    },
 }

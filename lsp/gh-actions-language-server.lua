@@ -5,7 +5,7 @@ return {
     -- Optional: custom filetypes
     filetypes = { "github-actions" },
     -- Optional: root directory logic
-    root_markers = { '.github/workflows', '.git' },
+    root_markers = { ".github/workflows", ".git" },
     -- Optional: any custom settings
     settings = {
         -- Add your custom settings here

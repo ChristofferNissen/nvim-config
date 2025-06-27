@@ -9,9 +9,9 @@ return {
             auto_preview = true, -- automatically open preview when on an item
             auto_refresh = true, -- auto refresh when open
             auto_jump = false, -- auto jump to the item when there's only one
-            focus = true,   -- Focus the window when opened
+            focus = true, -- Focus the window when opened
             restore = true, -- restores the last location in the list when opening
-            follow = true,  -- Follow the current item
+            follow = true, -- Follow the current item
             indent_guides = true, -- show indent guides
             max_items = 200, -- limit number of items that can be displayed per section
             multiline = true, -- render multi-line messages
@@ -19,7 +19,7 @@ return {
             warn_no_results = true, -- show a warning when there are no results
             open_no_results = false, -- open the trouble window when there are no results
             ---@type trouble.Window.opts
-            win = {},       -- window options for the results window. Can be a split or a floating window.
+            win = {}, -- window options for the results window. Can be a split or a floating window.
             -- Window options for the preview window. Can be a split, floating window,
             -- or `main` to show the preview in the main editor window.
             ---@type trouble.Window.opts
@@ -33,10 +33,10 @@ return {
             -- Throttle/Debounce settings. Should usually not be changed.
             ---@type table<string, number|{ms:number, debounce?:boolean}>
             throttle = {
-                refresh = 20,                -- fetches new data when needed
-                update = 10,                 -- updates the window
-                render = 10,                 -- renders the window
-                follow = 100,                -- follows the current item
+                refresh = 20, -- fetches new data when needed
+                update = 10, -- updates the window
+                render = 10, -- renders the window
+                follow = 100, -- follows the current item
                 preview = { ms = 100, debounce = true }, -- shows the preview for the current item
             },
             ---@type table<string, trouble.Mode>

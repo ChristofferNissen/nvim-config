@@ -45,7 +45,7 @@ return {
                 -- Terraform
                 terraform = { "terraform_fmt" },
                 -- YAML
-                -- yaml = { "yamlfmt", "yamlfix" },
+                yaml = { "yamlfmt", "yamlfix" },
                 -- Zig
                 zig = { "zigfmt" },
             },
@@ -59,6 +59,10 @@ return {
             formatters = {
                 shfmt = {
                     prepend_args = { "-i", "2" },
+                },
+                csharpier = {
+                    command = "dotnet-csharpier",
+                    args = { "--write-stdout" },
                 },
             },
         },

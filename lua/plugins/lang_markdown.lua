@@ -41,6 +41,7 @@ return {
         keys = {
             {
                 "<leader>mr",
+                ft = "markdown",
                 "<cmd>RenderMarkdown toggle<cr>",
                 desc = "Toggle Markdown preview",
             },

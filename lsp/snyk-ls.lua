@@ -7,5 +7,5 @@ return {
     settings = {},
     init_options = {
         automaticAuthentication = "false",
-    }
+    },
 }

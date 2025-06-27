@@ -1,11 +1,12 @@
 version: "3"
-
 env:
-  # CONF_PATH: /home/cn/code/nvim-config # Linux
-  CONF_PATH: /Users/cn/code/nvim-config # MAC
+  CONF_PATH: /home/cn/code/lazyvim-config # Linux
+  # CONF_PATH: /Users/cn/code/nvim-config # MAC
   # CONF_PATH: "/home/cn/configs/lazyvim-config" # WSL
-
 tasks:
+  format:
+    cmds:
+      - stylua .
   symlink:
     cmds:
       [

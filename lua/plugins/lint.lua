@@ -22,7 +22,7 @@ return {
                         return {}
                     end
                     local diagnostics = {}
-                    local current_file = vim.api.nvim_buf_get_name(bufnr)
+                    -- local current_file = vim.api.nvim_buf_get_name(bufnr)
 
                     for line in output:gmatch("[^\r\n]+") do
                         if line:match("^KubeLinter") or line:match("^Error:") or line:match("^%s*$") then
