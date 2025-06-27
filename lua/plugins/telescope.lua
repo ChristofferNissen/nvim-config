@@ -1,42 +1,42 @@
 return {
-	{
-		"nvim-telescope/telescope.nvim",
-		lazy = false,
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			{
-				"fredrikaverpil/godoc.nvim",
-				event = "VeryLazy",
-			},
-			{
-				"nvim-telescope/telescope-file-browser.nvim",
-				event = "VeryLazy",
-				dependencies = {
-					"nvim-telescope/telescope.nvim",
-					"nvim-lua/plenary.nvim",
-					"nvim-tree/nvim-web-devicons",
-				},
-			},
-			{
-				"nvim-telescope/telescope-ui-select.nvim",
-				event = "VeryLazy",
-			},
-			{
-				"benfowler/telescope-luasnip.nvim",
-				event = "VeryLazy",
-			},
-			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-			{
-				"ANGkeith/telescope-terraform-doc.nvim",
-				event = "VeryLazy",
-				dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
-			},
-			{
-				"cappyzawa/telescope-terraform.nvim",
-				event = "VeryLazy",
-				dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
-			},
-		},
+    {
+        "nvim-telescope/telescope.nvim",
+        lazy = false,
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            {
+                "fredrikaverpil/godoc.nvim",
+                event = "VeryLazy",
+            },
+            {
+                "nvim-telescope/telescope-file-browser.nvim",
+                event = "VeryLazy",
+                dependencies = {
+                    "nvim-telescope/telescope.nvim",
+                    "nvim-lua/plenary.nvim",
+                    "nvim-tree/nvim-web-devicons",
+                },
+            },
+            {
+                "nvim-telescope/telescope-ui-select.nvim",
+                event = "VeryLazy",
+            },
+            {
+                "benfowler/telescope-luasnip.nvim",
+                event = "VeryLazy",
+            },
+            { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+            {
+                "ANGkeith/telescope-terraform-doc.nvim",
+                event = "VeryLazy",
+                dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
+            },
+            {
+                "cappyzawa/telescope-terraform.nvim",
+                event = "VeryLazy",
+                dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
+            },
+        },
         -- stylua: ignore
         keys = {
             {
@@ -108,42 +108,42 @@ return {
                 desc = "telescope YAML",
             },
             {
-                "<leader>ptt",
+                "<leader>pts",
                 mode = "n",
                 function() require("telescope").extensions.terraform.state_list() end,
                 desc = "telescope terraform",
             },
             {
-                "<leader>ptd",
+                "<leader>ptp",
                 mode = "n",
                 function() require("telescope").extensions.terraform_doc.terraform_doc() end,
                 desc = "telescope terraform docs",
             }
         },
-		config = function()
-			local themes = require("telescope.themes")
-			local opts = {
-				extensions = {
-					file_browser = {
-						respect_gitignore = false,
-						hijack_netrw = false,
-						hidden = true,
-					},
-					luasnip = themes.get_dropdown({
-						-- border = false,
-						preview = {
-							check_mime_type = true,
-						},
-					}),
-				},
-			}
-			require("telescope").setup(opts)
-			require("telescope").load_extension("file_browser")
-			require("telescope").load_extension("terraform_doc")
-			require("telescope").load_extension("terraform")
-			require("telescope").load_extension("ui-select")
-			require("telescope").load_extension("fzf")
-			require("telescope").load_extension("luasnip")
-		end,
-	},
+        config = function()
+            local themes = require("telescope.themes")
+            local opts = {
+                extensions = {
+                    file_browser = {
+                        respect_gitignore = false,
+                        hijack_netrw = false,
+                        hidden = true,
+                    },
+                    luasnip = themes.get_dropdown({
+                        -- border = false,
+                        preview = {
+                            check_mime_type = true,
+                        },
+                    }),
+                },
+            }
+            require("telescope").setup(opts)
+            require("telescope").load_extension("file_browser")
+            require("telescope").load_extension("terraform_doc")
+            require("telescope").load_extension("terraform")
+            require("telescope").load_extension("ui-select")
+            require("telescope").load_extension("fzf")
+            require("telescope").load_extension("luasnip")
+        end,
+    },
 }

@@ -27,4 +27,4 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- terraform doc
-vim.api.nvim_set_keymap("n", "<leader>do", ":OpenDoc<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>ptd", ":OpenDoc<CR>", { noremap = true, silent = true })
