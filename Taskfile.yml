@@ -2,8 +2,8 @@ version: "3"
 
 env:
   # CONF_PATH: /home/cn/code/nvim-config # Linux
-  # CONF_PATH: /Users/cn/code/nvim-config # MAC
-  CONF_PATH: "/home/cn/configs/lazyvim-config" # WSL
+  CONF_PATH: /Users/cn/code/nvim-config # MAC
+  # CONF_PATH: "/home/cn/configs/lazyvim-config" # WSL
 
 tasks:
   symlink:
@@ -14,15 +14,15 @@ tasks:
       ]
   test:
     deps: [symlink]
+    desc: "Test config"
     cmds: [NVIM_APPNAME=local nvim .]
     silent: true
     interactive: false
   symlink_except:
-    desc: "Symlink all files from source_dir to target_dir except those in exclude_list"
     silent: true
     interactive: false
     vars:
-      source_dir: "$HOME/code/lazyvim-config"
+      source_dir: "$CONF_PATH"
       target_dir: "$HOME/.config/min"
       exclude_list: ".tasks/exclude.txt"
     cmds:
@@ -59,12 +59,8 @@ tasks:
           mkdir -p "$TARGET_DIR/$(dirname "$rel_file")"
           ln -sf "$SOURCE_DIR/$rel_file" "$TARGET_DIR/$rel_file"
         done
-  setup_min_config:
-    desc: "Set up ~/.config/min using symlink_except"
+  min:
     deps: [symlink_except]
-    cmds: []
-  test-min:
-    deps: [setup_min_config]
+    desc: "Test minimum config. Ignores plugins defined in .tasks/exclude.txt"
     cmds: [NVIM_APPNAME=min nvim .]
-    # silent: true
     interactive: false

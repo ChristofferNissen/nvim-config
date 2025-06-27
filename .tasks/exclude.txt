@@ -1,4 +1,4 @@
 lua/plugins/copilot.lua
 lua/plugins/dap.lua
-lua/plugins/neotree.lua
 lua/plugins/trouble.lua
+lua/plugins
