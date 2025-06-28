@@ -7,13 +7,18 @@ return {
                 "L3MON4D3/LuaSnip",
                 version = "v2.*",
                 config = function()
+                    -- Load collection
+                    require("luasnip.loaders.from_vscode").lazy_load()
+                    -- Add custom snippets
                     require("luasnip.loaders.from_vscode").lazy_load({
                         paths = { vim.fn.stdpath("config") .. "/snippets" },
                     })
-                    require("luasnip.loaders.from_lua").load({ paths = vim.fn.stdpath("config") .. "/snippets" })
+                    require("luasnip.loaders.from_lua").load({ paths = { vim.fn.stdpath("config") .. "/snippets" } })
                 end,
+                dependencies = {
+                    "rafamadriz/friendly-snippets",
+                },
             },
-            "rafamadriz/friendly-snippets",
             "fang2hou/blink-copilot",
         },
 
@@ -34,12 +39,18 @@ return {
             snippets = { preset = "luasnip" },
 
             sources = {
-                default = { "lsp", "copilot", "path", "snippets", "buffer" },
+                default = { "lazydev", "lsp", "copilot", "path", "snippets", "buffer" },
                 providers = {
+                    lazydev = {
+                        name = "LazyDev",
+                        module = "lazydev.integrations.blink",
+                        -- make lazydev completions top priority (see `:h blink.cmp`)
+                        score_offset = 100,
+                    },
                     copilot = {
                         name = "copilot",
                         module = "blink-copilot",
-                        score_offset = 100,
+                        score_offset = 90,
                         async = true,
                     },
                 },

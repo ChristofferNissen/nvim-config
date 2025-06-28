@@ -81,10 +81,25 @@ return {
         opts = {
             options = {
                 theme = "dracula",
+                -- theme = "catppuccin-mocha",
+                icons_enabled = true,
+                globalstatus = true,
             },
             sections = {
                 lualine_a = { "mode" },
-                lualine_b = { "branch", "diff", "diagnostics" },
+                lualine_b = {
+                    "branch",
+                    "diff",
+                    -- "diagnostics",
+                    {
+                        "diagnostics",
+                        sources = {
+                            --"nvim_lsp",
+                            --"nvim_diagnostic",
+                            "nvim_workspace_diagnostic",
+                        },
+                    },
+                },
                 lualine_c = {
                     {
                         go_package,
@@ -96,15 +111,15 @@ return {
                     { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available },
                 },
 
-                -- lualine_x = { require("yaml_nvim").get_yaml_key_and_value },
                 lualine_x = {
                     { yaml_schema_component },
+                },
+                lualine_y = {
                     "encoding",
                     "fileformat",
                     "filetype",
                 },
-                lualine_y = { "progress" },
-                lualine_z = { "location" },
+                lualine_z = { "progress", "location" },
             },
         },
     },

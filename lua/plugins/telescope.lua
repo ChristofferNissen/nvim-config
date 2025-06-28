@@ -36,6 +36,9 @@ return {
                 event = "VeryLazy",
                 dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
             },
+            {
+                "folke/noice.nvim",
+            },
         },
         -- stylua: ignore
         keys = {
@@ -49,7 +52,10 @@ return {
                 "<C-p>",
                 -- "<leader>e",
                 mode = "n",
-                function() require("telescope.builtin").git_files() end,
+                -- function() require("telescope.builtin").git_files() end,
+                function()
+                    require("telescope").extensions.smart_open.smart_open()
+                end,
                 desc = "telescope find files"
             },
             {
@@ -144,6 +150,7 @@ return {
             require("telescope").load_extension("ui-select")
             require("telescope").load_extension("fzf")
             require("telescope").load_extension("luasnip")
+            require("telescope").load_extension("noice")
         end,
     },
 }

@@ -1,21 +1,19 @@
-version: "3"
+---
+version: '3'
 env:
-  CONF_PATH: /home/cn/code/lazyvim-config # Linux
-  # CONF_PATH: /Users/cn/code/nvim-config # MAC
-  # CONF_PATH: "/home/cn/configs/lazyvim-config" # WSL
+  # CONF_PATH: /home/cn/code/lazyvim-config  # Linux
+  CONF_PATH: /Users/cn/code/nvim-config  # MAC
+  # CONF_PATH: "/home/cn/configs/lazyvim-config"  # WSL
 tasks:
   format:
-    cmds:
-      - stylua .
+    cmds: [stylua .]
   symlink:
     cmds:
-      [
-        rm ~/.config/local || echo "folder does not exist",
-        ln -s $CONF_PATH ~/.config/local,
-      ]
+      - rm ~/.config/local || echo "folder does not exist"
+      - ln -s $CONF_PATH ~/.config/local
   test:
     deps: [symlink]
-    desc: "Test config"
+    desc: Test config
     cmds: [NVIM_APPNAME=local nvim .]
     silent: true
     interactive: false
@@ -23,26 +21,22 @@ tasks:
     silent: true
     interactive: false
     vars:
-      source_dir: "$CONF_PATH"
-      target_dir: "$HOME/.config/min"
-      exclude_list: ".tasks/exclude.txt"
+      source_dir: $CONF_PATH
+      target_dir: $HOME/.config/min
+      exclude_list: .tasks/exclude.txt
     cmds:
       - |
         #!/usr/bin/env bash
         set -euo pipefail
-
         SOURCE_DIR={{.source_dir}}
         TARGET_DIR={{.target_dir}}
         EXCLUDE_LIST={{.exclude_list}}
-
         if [[ -z "$SOURCE_DIR" || -z "$TARGET_DIR" || -z "$EXCLUDE_LIST" ]]; then
           echo "ERROR: You must provide source_dir, target_dir, and exclude_list variables."
           exit 1
         fi
-
         mapfile -t EXCLUDES < "$EXCLUDE_LIST"
         cd "$SOURCE_DIR"
-
         is_excluded() {
           local file="$1"
           for exclude in "${EXCLUDES[@]}"; do
@@ -50,7 +44,6 @@ tasks:
           done
           return 1
         }
-
         find . -type f | while read -r file; do
           rel_file="${file#./}"
           if is_excluded "$rel_file"; then
@@ -62,6 +55,6 @@ tasks:
         done
   min:
     deps: [symlink_except]
-    desc: "Test minimum config. Ignores plugins defined in .tasks/exclude.txt"
+    desc: Test minimum config. Ignores plugins defined in .tasks/exclude.txt
     cmds: [NVIM_APPNAME=min nvim .]
     interactive: false
