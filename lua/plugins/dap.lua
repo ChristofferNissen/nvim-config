@@ -3,8 +3,20 @@ return {
         "mfussenegger/nvim-dap",
         lazy = true,
         dependencies = {
-            { "rcarriga/nvim-dap-ui" },
-            { "nvim-neotest/nvim-nio" },
+            { "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
+            -- {
+            --     "igorlfs/nvim-dap-view",
+            --     ---@module 'dap-view'
+            --     ---@type dapview.Config
+            --     opts = {
+            --         windows = {
+            --             terminal = {
+            --                 -- Use the actual names for the adapters you want to hide
+            --                 hide = { "go" }, -- `go` is known to not use the terminal.
+            --             },
+            --         },
+            --     },
+            -- },
             { "leoluz/nvim-dap-go" },
             {
                 "williamboman/mason.nvim",
@@ -20,7 +32,7 @@ return {
                 "<leader>ds",
                 mode = "n",
                 function()
-                    require("dap").continue()
+                    -- require("dap").continue()
                     require("dapui").toggle({})
                     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-w>=", false, true, true), "n", false) -- Spaces buffers evenly
                 end,
@@ -88,7 +100,7 @@ return {
                 "<leader>de",
                 mode = "n",
                 function()
-                    require("dap").clear_breakpoints()
+                    -- require("dap").clear_breakpoints()
                     require("dapui").toggle({})
                     require("dap").terminate()
                     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-w>=", false, true, true), "n", false)
@@ -99,7 +111,21 @@ return {
         },
         config = function()
             local dap = require("dap")
+            -- local dv = require("dap-view")
             local ui = require("dapui")
+
+            -- dap.listeners.before.attach["dap-view-config"] = function()
+            --     dv.open()
+            -- end
+            -- dap.listeners.before.launch["dap-view-config"] = function()
+            --     dv.open()
+            -- end
+            -- dap.listeners.before.event_terminated["dap-view-config"] = function()
+            --     dv.close()
+            -- end
+            -- dap.listeners.before.event_exited["dap-view-config"] = function()
+            --     dv.close()
+            -- end
 
             dap.set_log_level("INFO")
 
@@ -123,6 +149,8 @@ return {
                     },
                     {
                         elements = {
+                            -- "watches",
+                            "console",
                             "repl",
                             "breakpoints",
                         },
@@ -144,30 +172,7 @@ return {
                 },
             })
 
-            dap.configurations = {
-                go = {
-                    {
-                        type = "go", -- Which adapter to use
-                        name = "Debug go file", -- Human readable name
-                        request = "launch", -- Whether to "launch" or "attach" to program
-                        program = "${file}",
-                    },
-                },
-            }
-
-            local opts = {
-                dap_configurations = {
-                    {
-                        type = "go",
-                        name = "Attach remote",
-                        mode = "remote",
-                        request = "attach",
-                    },
-                },
-            }
-            require("dap-go").setup(opts)
-            require("dap.ext.vscode").load_launchjs(nil, {})
-
+            -- Go
             dap.adapters.go = {
                 type = "server",
                 port = "${port}",
@@ -176,6 +181,23 @@ return {
                     args = { "dap", "-l", "127.0.0.1:${port}" },
                 },
             }
+            local opts = {
+                dap_configurations = {
+                    {
+                        type = "go",
+                        name = "Attach remote",
+                        mode = "remote",
+                        request = "attach",
+                    },
+                    {
+                        type = "go", -- Which adapter to use
+                        name = "Debug go file", -- Human readable name
+                        request = "launch", -- Whether to "launch" or "attach" to program
+                        program = "${file}",
+                    },
+                },
+            }
+            require("dap-go").setup(opts)
 
             -- Dotnet
             if not dap.adapters["netcoredbg"] then
@@ -206,6 +228,7 @@ return {
             end
 
             vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "Error" })
+            require("dap.ext.vscode").load_launchjs(nil, {})
         end,
     },
 }
