@@ -4,7 +4,6 @@ return {
         event = { "BufWritePre" },
         config = function()
             local locator = require("kube_linter_yaml_locator")
-
             require("lint").linters.kube_linter = {
                 name = "kube_linter",
                 cmd = "kube-linter",
@@ -56,23 +55,26 @@ return {
                     return diagnostics
                 end,
             }
+
             require("lint").linters_by_ft = {
                 python = { "flake8", "mypy" },
                 lua = { "luacheck" },
-                terraform = { "tflint", "tfsec", "terraform_validate" },
+                terraform = { "trivy", "tflint", "terraform_validate" },
                 markdown = { "markdownlint-cli2" },
                 sh = { "shellcheck" },
                 bash = { "shellcheck" },
                 zsh = { "shellcheck" },
                 go = { "golangci_lint" },
                 yaml = { "yamllint", "kube_linter" },
-                dockerfile = { "hadolint" },
+                dockerfile = { "trivy", "hadolint" },
                 helm = { "kube_linter" }, -- or helm_lint
                 dotenv = { "dotenv-linter" },
+                nix = { "nix" },
             }
+
             -- Optionally set up an autocommand for linting on save
-            -- vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-            vim.api.nvim_create_autocmd({ "BufReadPost" }, {
+            vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+                -- vim.api.nvim_create_autocmd({ "BufReadPost" }, {
                 callback = function()
                     require("lint").try_lint()
                 end,

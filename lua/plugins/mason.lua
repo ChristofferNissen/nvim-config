@@ -31,8 +31,7 @@ return {
             "dockerfile-language-server",
             "docker-compose-language-service",
             "hadolint",
-            "snyk",
-            "snyk-ls",
+            "trivy",
             -- lua
             "lua-language-server",
             "luacheck",
@@ -57,7 +56,7 @@ return {
             "terraform",
             "terraform-ls",
             "tflint",
-            "tfsec",
+            -- "tfsec", -- part of trivy now
             -- zig
             "zls",
             -- markdown
@@ -82,10 +81,11 @@ return {
             "gomodifytags",
             "impl",
             "golangci-lint",
+            "templ",
             -- rust
             "rust-analyzer",
-            "bacon",
-            "bacon-ls",
+            -- "bacon",
+            -- "bacon-ls",
             -- typescript
             "typescript-language-server",
             -- java
