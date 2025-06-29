@@ -29,7 +29,7 @@ return {
                 -- Go
                 go = { "gofumpt", "goimports", "golangci-lint" },
                 -- C, C++, Objective-C
-                c = { "clang-format" },
+                -- c = { "clang-format" },
                 cpp = { "clang-format" },
                 objc = { "clang-format" },
                 -- C#
