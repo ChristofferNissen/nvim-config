@@ -64,5 +64,5 @@ return {
         },
     },
     single_file_support = true,
-    filetypes = { "yml", "yaml", "yaml.docker-compose", "yaml.gitlab" },
+    filetypes = { "yaml", "yaml.docker-compose", "yaml.gitlab", "yaml.helm-values" },
 }
