@@ -68,7 +68,7 @@ return {
                 function()
                     require("dap").step_over()
                 end,
-                desc = " dap step over",
+                desc = "dap step over",
             },
             {
                 "<leader>di",
@@ -84,7 +84,7 @@ return {
                 function()
                     require("dap").step_out()
                 end,
-                desc = " dap step out",
+                desc = "dap step out",
             },
             {
                 "<leader>dC",
