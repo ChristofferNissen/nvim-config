@@ -10,17 +10,24 @@ return {
                 config = function()
                     require("treesitter-terraform-doc").setup({
                         command_name = "OpenDoc",
-                        url_opener_command = "!firefox", -- "!w3m", -- or your preferred browser command
+                        -- url_opener_command = "!firefox", -- "!w3m", -- or your preferred browser command
+                        url_opener_command = "!xdg-open", -- or your preferred browser command
                         jump_argument = true,
                     })
                 end,
             },
         },
+        config = function(_, opts)
+            require("nvim-treesitter.configs").setup(opts)
+            -- This is needed to ensure that the treesitter-terraform-doc works correctly
+            vim.cmd([[command! -nargs=0 OpenDoc lua require('treesitter-terraform-doc').open_doc()]])
+        end,
         opts = {
             autotag = {
                 enable = true,
             },
             ensure_installed = {
+                "html",
                 "terraform",
                 "hcl",
                 "gleam",
@@ -55,6 +62,7 @@ return {
                 "rst",
                 "kotlin",
                 "java",
+                "powershell",
             },
             highlight = {
                 -- `false` will disable the whole extension
