@@ -44,6 +44,10 @@ vim.opt.listchars:append("eol:󱞣")
 vim.o.timeout = true
 vim.o.timeoutlen = 1000
 
+-- Disabled because of harper-ls
+-- vim.o.spell = true
+-- vim.o.spelllang = "en_us"
+
 -- folding https://www.jmaguire.tech/posts/treesitter_folding/
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
@@ -59,15 +63,8 @@ vim.filetype.add({
 })
 vim.treesitter.language.register("yaml", "azure_pipelines")
 
--- vim.api.nvim_create_autocmd("BufReadPost", {
---     pattern = { "azure-pipelines.yaml", "azure-pipelines.yml", "*.azure-pipelines/*.yml", "*.azure-pipelines/*.yaml" },
---     callback = function()
---         vim.bo.filetype = "azure_pipelines"
---         vim.lsp.start({
---             name = "azure-pipelines-ls",
---             cmd = { "azure-pipelines-language-server", "--stdio" },
---             filetypes = { "azure_pipelines" },
---             root_dir = vim.fs.dirname(vim.api.nvim_buf_get_name(0)),
---         })
---     end,
--- })
+vim.filetype.add({
+    extension = {
+        tf = "terraform",
+    },
+})
