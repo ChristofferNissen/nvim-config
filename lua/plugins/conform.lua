@@ -45,7 +45,7 @@ return {
                 -- Terraform
                 terraform = { "terraform_fmt" },
                 -- YAML
-                yaml = { "yamlfmt", "yamlfix" },
+                -- yaml = { "yamlfmt", "yamlfix" },
                 -- Zig
                 zig = { "zigfmt" },
             },
