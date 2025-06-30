@@ -63,6 +63,7 @@ return {
                 "kotlin",
                 "java",
                 "powershell",
+                "latex",
             },
             highlight = {
                 -- `false` will disable the whole extension
