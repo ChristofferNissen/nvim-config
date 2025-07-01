@@ -34,6 +34,12 @@ return {
                 nerd_font_variant = "mono",
             },
 
+            enabled = function()
+                return not vim.list_contains({ "lazy", "typr" }, vim.bo.filetype)
+                    and vim.bo.buftype ~= "prompt"
+                    and vim.b.completion ~= false
+            end,
+
             completion = { documentation = { auto_show = false } },
 
             snippets = { preset = "luasnip" },
