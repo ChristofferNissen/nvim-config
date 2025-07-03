@@ -24,7 +24,7 @@ return {
             -- },
             -- system_prompt = "https://gist.github.com/ChristofferNissen/a64f508def50801550cbfe4922d92b40",
             system_prompt = function()
-                return vim.fn.stdpath("config") .. "/lua/plugins/avante_prompts/4.1.chatmode.md"
+                return vim.fn.fnamemodify(vim.env.MYVIMRC, ":h") .. "/lua/plugins/avante_prompts/4.1.chatmode.md"
             end,
         },
         dependencies = {
