@@ -64,7 +64,7 @@ return {
                 sh = { "shellcheck" },
                 bash = { "shellcheck" },
                 zsh = { "shellcheck" },
-                go = { "golangci_lint" },
+                go = { "golangcilint" },
                 yaml = { "yamllint", "kube_linter" },
                 dockerfile = { "trivy", "hadolint" },
                 helm = { "kube_linter" }, -- or helm_lint

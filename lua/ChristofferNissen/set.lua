@@ -68,3 +68,6 @@ vim.filetype.add({
         tf = "terraform",
     },
 })
+
+-- Avante
+vim.opt.laststatus = 3

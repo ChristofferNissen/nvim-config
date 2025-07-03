@@ -36,8 +36,9 @@ return {
                 sign = false,
                 icons = {},
             },
+            file_types = { "markdown", "norg", "rmd", "org", "Avante" },
         },
-        ft = { "markdown", "norg", "rmd", "org" },
+        ft = { "markdown", "norg", "rmd", "org", "Avante" },
         keys = {
             {
                 "<leader>mr",

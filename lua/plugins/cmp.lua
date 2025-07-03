@@ -20,6 +20,7 @@ return {
                 },
             },
             "fang2hou/blink-copilot",
+            -- "Kaiser-Yang/blink-cmp-avante",
         },
 
         -- use a release tag to download pre-built binaries
@@ -45,8 +46,15 @@ return {
             snippets = { preset = "luasnip" },
 
             sources = {
-                default = { "lazydev", "lsp", "copilot", "path", "snippets", "buffer" },
+                default = { "copilot", "lazydev", "lsp", "path", "snippets", "buffer" },
                 providers = {
+                    -- avante = {
+                    --     module = "blink-cmp-avante",
+                    --     name = "Avante",
+                    --     opts = {
+                    --         -- options for blink-cmp-avante
+                    --     },
+                    -- },
                     lazydev = {
                         name = "LazyDev",
                         module = "lazydev.integrations.blink",
