@@ -36,9 +36,9 @@ return {
                 sign = false,
                 icons = {},
             },
-            file_types = { "markdown", "norg", "rmd", "org", "Avante" },
+            file_types = { "markdown", "norg", "rmd", "org", "Avante", "codecompanion" },
         },
-        ft = { "markdown", "norg", "rmd", "org", "Avante" },
+        ft = { "markdown", "norg", "rmd", "org", "Avante", "codecompanion" },
         keys = {
             {
                 "<leader>mr",
@@ -48,4 +48,14 @@ return {
             },
         },
     },
+    -- {
+    --     "OXY2DEV/markview.nvim",
+    --     lazy = false,
+    --     opts = {
+    --         preview = {
+    --             filetypes = { "markdown", "codecompanion" },
+    --             ignore_buftypes = {},
+    --         },
+    --     },
+    -- },
 }

@@ -46,7 +46,7 @@ return {
             snippets = { preset = "luasnip" },
 
             sources = {
-                default = { "copilot", "lazydev", "lsp", "path", "snippets", "buffer" },
+                default = { "codecompanion", "copilot", "lazydev", "lsp", "path", "snippets", "buffer" },
                 providers = {
                     -- avante = {
                     --     module = "blink-cmp-avante",
