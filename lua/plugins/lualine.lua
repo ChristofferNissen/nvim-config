@@ -77,7 +77,10 @@ return {
     {
         "nvim-lualine/lualine.nvim",
         event = "VeryLazy",
-        dependencies = { "nvim-tree/nvim-web-devicons", optional = true },
+        dependencies = {
+            { "nvim-tree/nvim-web-devicons", optional = true },
+            { "AndreM222/copilot-lualine" },
+        },
         opts = {
             options = {
                 theme = "dracula",
@@ -113,6 +116,7 @@ return {
 
                 lualine_x = {
                     { yaml_schema_component },
+                    "copilot",
                 },
                 lualine_y = {
                     "encoding",
