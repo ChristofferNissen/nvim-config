@@ -84,14 +84,16 @@ return {
             "templ",
             -- rust
             "rust-analyzer",
-            -- "bacon",
-            -- "bacon-ls",
             -- typescript
             "typescript-language-server",
             -- java
+            "jdtls",
             "java-debug-adapter",
             "java-test",
             "ktlint",
+            -- kotlin
+            "kotlin-lsp",
+            "ktfmt",
         },
     },
     ---@param opts MasonSettings | {ensure_installed: string[]}

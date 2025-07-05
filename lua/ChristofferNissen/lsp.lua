@@ -11,6 +11,7 @@ vim.lsp.enable({
     "harper-ls",
     "helm-ls",
     "jsonls",
+    "kotlin-lsp",
     "luals",
     "marksman",
     "nix",
