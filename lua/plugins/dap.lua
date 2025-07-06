@@ -16,6 +16,24 @@ return {
             --             },
             --         },
             --     },
+            --     config = function(_, opts)
+            --         require("dap-view").setup(opts)
+            --
+            --         -- Auto launch
+            --         local dap, dv = require("dap"), require("dap-view")
+            --         dap.listeners.before.attach["dap-view-config"] = function()
+            --             dv.open()
+            --         end
+            --         dap.listeners.before.launch["dap-view-config"] = function()
+            --             dv.open()
+            --         end
+            --         dap.listeners.before.event_terminated["dap-view-config"] = function()
+            --             dv.close()
+            --         end
+            --         dap.listeners.before.event_exited["dap-view-config"] = function()
+            --             dv.close()
+            --         end
+            --     end,
             -- },
             { "leoluz/nvim-dap-go" },
             {
@@ -111,21 +129,7 @@ return {
         },
         config = function()
             local dap = require("dap")
-            -- local dv = require("dap-view")
             local ui = require("dapui")
-
-            -- dap.listeners.before.attach["dap-view-config"] = function()
-            --     dv.open()
-            -- end
-            -- dap.listeners.before.launch["dap-view-config"] = function()
-            --     dv.open()
-            -- end
-            -- dap.listeners.before.event_terminated["dap-view-config"] = function()
-            --     dv.close()
-            -- end
-            -- dap.listeners.before.event_exited["dap-view-config"] = function()
-            --     dv.close()
-            -- end
 
             dap.set_log_level("INFO")
 
