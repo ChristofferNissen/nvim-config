@@ -5,7 +5,8 @@ return {
             "nvim-treesitter/nvim-treesitter",
             "nvim-telescope/telescope.nvim",
         },
-        ft = { "yaml" },
+        ft = { "yaml", "json", "azure_pipelines" },
+        event = "VeryLazy",
         opts = {
             ft = {
                 json = true,
