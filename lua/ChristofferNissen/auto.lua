@@ -135,3 +135,19 @@ vim.api.nvim_create_autocmd("TextYankPost", {
         vim.highlight.on_yank({ higroup = "IncSearch" })
     end,
 })
+
+-- Trouble
+vim.api.nvim_create_autocmd("QuickFixCmdPost", {
+    callback = function()
+        vim.cmd([[Trouble qflist open]])
+    end,
+})
+
+-- NVIM Lint
+-- Set up an autocommand for linting on save
+-- vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+vim.api.nvim_create_autocmd({ "BufReadPost" }, {
+    callback = function()
+        require("lint").try_lint()
+    end,
+})

@@ -23,10 +23,8 @@ return {
         dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" },
         ---@module 'render-markdown'
         ---@type render.md.UserConfig
-        -- opts = {},
         opts = {
             completions = { lsp = { enabled = true } },
-            -- completions = { blink = { enabled = true } },
             code = {
                 sign = false,
                 width = "block",
@@ -48,14 +46,4 @@ return {
             },
         },
     },
-    -- {
-    --     "OXY2DEV/markview.nvim",
-    --     lazy = false,
-    --     opts = {
-    --         preview = {
-    --             filetypes = { "markdown", "codecompanion" },
-    --             ignore_buftypes = {},
-    --         },
-    --     },
-    -- },
 }

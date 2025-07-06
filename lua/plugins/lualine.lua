@@ -78,7 +78,7 @@ return {
         "nvim-lualine/lualine.nvim",
         event = "VeryLazy",
         dependencies = {
-            { "nvim-tree/nvim-web-devicons", optional = true },
+            { "echasnovski/mini.icons", optional = true },
             { "AndreM222/copilot-lualine" },
         },
         opts = {

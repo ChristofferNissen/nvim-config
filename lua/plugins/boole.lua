@@ -1,6 +1,6 @@
 return {
     {
-        "nat-418/boole.nvim",
+        "ChristofferNissen/boole.nvim",
         event = "VeryLazy",
         lazy = true,
         config = function()

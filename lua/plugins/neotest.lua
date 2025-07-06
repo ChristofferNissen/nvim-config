@@ -4,6 +4,7 @@ return {
         optional = true,
         dependencies = {
             "fredrikaverpil/neotest-golang",
+            "Issafalcon/neotest-dotnet",
         },
         opts = {
             adapters = {
