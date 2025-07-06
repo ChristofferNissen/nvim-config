@@ -71,14 +71,6 @@ return {
                 dotenv = { "dotenv-linter" },
                 nix = { "nix" },
             }
-
-            -- Optionally set up an autocommand for linting on save
-            vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-                -- vim.api.nvim_create_autocmd({ "BufReadPost" }, {
-                callback = function()
-                    require("lint").try_lint()
-                end,
-            })
         end,
     },
 }
