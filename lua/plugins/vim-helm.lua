@@ -1,6 +1,6 @@
 return {
     {
         "towolf/vim-helm",
-        lazy = true,
+        -- lazy = true,
     },
 }
