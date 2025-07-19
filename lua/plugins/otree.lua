@@ -36,9 +36,11 @@ return {
             require("Otree").setup({
                 win_size = 35,
                 open_on_startup = false,
-                hijack_netrw = true,
+                use_default_keymaps = true,
+                hijack_netrw = false,
                 show_hidden = true,
                 show_ignore = true,
+                git_signs = true,
                 ignore_patterns = { "node_modules", ".git", ".cache" },
             })
             vim.keymap.set("n", "<leader>t", "<Cmd>Otree<CR>")

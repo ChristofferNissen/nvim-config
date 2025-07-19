@@ -35,3 +35,84 @@ vim.api.nvim_set_keymap("n", "<leader>ptd", ":OpenDoc<CR>", { noremap = true, si
 vim.keymap.set("n", "<leader>rn", function()
     return ":IncRename " .. vim.fn.expand("<cword>")
 end, { expr = true })
+
+-- Bufferline replacement
+vim.keymap.set("n", "H", ":bprev<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "L", ":bnext<CR>", { noremap = true, silent = true })
+
+-- copilot chat
+vim.keymap.set("n", "<leader>cct", function()
+    require("CopilotChat").toggle()
+end, { desc = "CopilotChat - Toggle chat" })
+
+vim.keymap.set("n", "<leader>cca", function()
+    require("CopilotChat").stop()
+end, { desc = "CopilotChat - Stop" })
+
+vim.keymap.set("n", "<leader>ccmg", function()
+    print(require("CopilotChat").resolve_model())
+end, { desc = "CopilotChat - Get Model" })
+
+vim.keymap.set("n", "<leader>ccms", function()
+    require("CopilotChat").select_model()
+end, { desc = "CopilotChat - Set Model" })
+
+-- Quick chat keybinding
+vim.keymap.set("n", "<leader>ccq", function()
+    local input = vim.fn.input("Quick Chat: ")
+    if input ~= "" then
+        require("CopilotChat").ask(input, {
+            selection = require("CopilotChat.select").buffer,
+        })
+    end
+end, { desc = "CopilotChat - Quick chat" })
+
+-- Copilot Chat History
+local function list_and_load_file()
+    -- Get directory from user (or use current directory)
+    -- local dir = vim.fn.input("Directory: ", vim.fn.getcwd(), "dir")
+    local dir = vim.fn.stdpath("data") .. "/copilotchat_history"
+    -- List files in directory
+    local files = vim.fn.readdir(dir)
+    if not files or vim.tbl_isempty(files) then
+        vim.notify("No files found in " .. dir, vim.log.levels.WARN)
+        return
+    end
+    -- Select file
+    vim.ui.select(files, { prompt = "Select a file to save to CopilotChat:" }, function(choice)
+        if choice then
+            local name = choice:gsub("%.json$", "")
+            require("CopilotChat").load(name, dir)
+            vim.notify("Loaded " .. name .. " to CopilotChat")
+        end
+    end)
+end
+vim.keymap.set("n", "<leader>cch", function()
+    list_and_load_file()
+end, { desc = "CopilotChat - Chat History" })
+
+vim.keymap.set("n", "<leader>ccs", function()
+    local name = vim.fn.input("Save CopilotChat chat as: ")
+    require("CopilotChat").save(name)
+end, { desc = "CopilotChat - Save file" })
+
+-- persistence
+-- load the session for the current directory
+vim.keymap.set("n", "<leader>gs", function()
+    require("persistence").load()
+end, { desc = "Load current session" })
+
+-- select a session to load
+vim.keymap.set("n", "<leader>gS", function()
+    require("persistence").select()
+end, { desc = "Select session to load" })
+
+-- load the last session
+vim.keymap.set("n", "<leader>gl", function()
+    require("persistence").load({ last = true })
+end, { desc = "Load last session" })
+
+-- stop Persistence => session won't be saved on exit
+vim.keymap.set("n", "<leader>gd", function()
+    require("persistence").stop()
+end, { desc = "Stop Persistence" })

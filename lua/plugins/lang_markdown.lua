@@ -34,9 +34,9 @@ return {
                 sign = false,
                 icons = {},
             },
-            file_types = { "markdown", "norg", "rmd", "org", "Avante", "codecompanion" },
+            file_types = { "markdown", "norg", "rmd", "org", "copilot-chat" },
         },
-        ft = { "markdown", "norg", "rmd", "org", "Avante", "codecompanion" },
+        ft = { "markdown", "norg", "rmd", "org", "copilot-chat" },
         keys = {
             {
                 "<leader>mr",
