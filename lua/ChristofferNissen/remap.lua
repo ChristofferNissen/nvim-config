@@ -49,14 +49,6 @@ vim.keymap.set("n", "<leader>cca", function()
     require("CopilotChat").stop()
 end, { desc = "CopilotChat - Stop" })
 
-vim.keymap.set("n", "<leader>ccmg", function()
-    print(require("CopilotChat").resolve_model())
-end, { desc = "CopilotChat - Get Model" })
-
-vim.keymap.set("n", "<leader>ccms", function()
-    require("CopilotChat").select_model()
-end, { desc = "CopilotChat - Set Model" })
-
 -- Quick chat keybinding
 vim.keymap.set("n", "<leader>ccq", function()
     local input = vim.fn.input("Quick Chat: ")
@@ -79,7 +71,7 @@ local function list_and_load_file()
         return
     end
     -- Select file
-    vim.ui.select(files, { prompt = "Select a file to save to CopilotChat:" }, function(choice)
+    vim.ui.select(files, { prompt = "Select a file to load to CopilotChat:" }, function(choice)
         if choice then
             local name = choice:gsub("%.json$", "")
             require("CopilotChat").load(name, dir)

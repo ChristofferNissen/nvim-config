@@ -22,7 +22,7 @@ return {
         build = "make tiktoken", -- Only on MacOS or Linux
         opts = {
             -- See Configuration section for options
-            system_prompt = vim.fn.fnamemodify(vim.env.MYVIMRC, ":h") .. "/lua/plugins/prompts/4.1.chatmode.md",
+            -- system_prompt = vim.fn.fnamemodify(vim.env.MYVIMRC, ":h") .. "/lua/plugins/prompts/4.1.chatmode.md",
         },
         -- See Commands section for default commands if you want to lazy load on them
     },
