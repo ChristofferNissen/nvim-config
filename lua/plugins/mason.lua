@@ -95,6 +95,10 @@ return {
                 -- kotlin
                 "kotlin-lsp",
                 "ktfmt",
+                -- SQL
+                "sqlls",
+                "sqruff",
+                -- "postgresstools"
             },
         },
         ---@param opts MasonSettings | {ensure_installed: string[]}

@@ -16,6 +16,7 @@ vim.lsp.enable({
     "marksman",
     "nix",
     "rust_analyzer",
+    "sqlls",
     "templ",
     "terraform-ls",
     "typescript-language-server",

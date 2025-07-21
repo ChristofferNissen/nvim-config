@@ -48,6 +48,7 @@ return {
                 -- yaml = { "yamlfmt", "yamlfix" },
                 -- Zig
                 zig = { "zigfmt" },
+                sql = { "sqruff" },
             },
             -- Set default options
             default_format_opts = {

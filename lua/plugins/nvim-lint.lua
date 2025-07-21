@@ -70,6 +70,7 @@ return {
                 helm = { "kube_linter" }, -- or helm_lint
                 dotenv = { "dotenv-linter" },
                 nix = { "nix" },
+                sql = { "sqruff" },
             }
         end,
     },
