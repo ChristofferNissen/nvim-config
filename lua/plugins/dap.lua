@@ -47,7 +47,7 @@ return {
         },
         keys = {
             {
-                "<leader>ds",
+                "<leader>ms",
                 mode = "n",
                 function()
                     -- require("dap").continue()
@@ -57,7 +57,7 @@ return {
                 desc = "dap start",
             },
             {
-                "<leader>dl",
+                "<leader>ml",
                 mode = "n",
                 function()
                     require("dap.ui.widgets").hover()
@@ -65,7 +65,7 @@ return {
                 desc = "dap ui hove",
             },
             {
-                "<leader>dc",
+                "<leader>mc",
                 mode = "n",
                 function()
                     require("dap").continue()
@@ -73,7 +73,7 @@ return {
                 desc = "dap continue",
             },
             {
-                "<leader>db",
+                "<leader>mb",
                 mode = "n",
                 function()
                     require("dap").toggle_breakpoint()
@@ -81,7 +81,7 @@ return {
                 desc = "dap breakpoint toggle",
             },
             {
-                "<leader>dn",
+                "<leader>mn",
                 mode = "n",
                 function()
                     require("dap").step_over()
@@ -89,7 +89,7 @@ return {
                 desc = "dap step over",
             },
             {
-                "<leader>di",
+                "<leader>mi",
                 mode = "n",
                 function()
                     require("dap").step_into()
@@ -97,7 +97,7 @@ return {
                 desc = "dap step into",
             },
             {
-                "<leader>do",
+                "<leader>mo",
                 mode = "n",
                 function()
                     require("dap").step_out()
@@ -105,7 +105,7 @@ return {
                 desc = "dap step out",
             },
             {
-                "<leader>dC",
+                "<leader>mC",
                 mode = "n",
                 function()
                     require("dap").clear_breakpoints()
@@ -115,7 +115,7 @@ return {
             },
             -- Close debugger and clear breakpoints
             {
-                "<leader>de",
+                "<leader>me",
                 mode = "n",
                 function()
                     -- require("dap").clear_breakpoints()
@@ -232,6 +232,7 @@ return {
             end
 
             vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "Error" })
+            -- require("dap.ext.vscode").load_launchjs(nil, {})
 
             -- setup dap config by VsCode launch.json file
             local vscode = require("dap.ext.vscode")
