@@ -1,7 +1,7 @@
 return {
     {
         "mfussenegger/nvim-dap",
-        lazy = true,
+        recommended = true,
         dependencies = {
             { "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
             -- {
@@ -232,7 +232,13 @@ return {
             end
 
             vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "Error" })
-            require("dap.ext.vscode").load_launchjs(nil, {})
+
+            -- setup dap config by VsCode launch.json file
+            local vscode = require("dap.ext.vscode")
+            local json = require("plenary.json")
+            vscode.json_decode = function(str)
+                return vim.json.decode(json.json_strip_comments(str))
+            end
         end,
     },
 }
