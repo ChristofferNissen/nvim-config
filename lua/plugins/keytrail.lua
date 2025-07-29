@@ -3,7 +3,6 @@ return {
         "jfryy/keytrail.nvim",
         dependencies = {
             "nvim-treesitter/nvim-treesitter",
-            "nvim-telescope/telescope.nvim",
         },
         ft = { "yaml", "json", "azure_pipelines" },
         event = "VeryLazy",
