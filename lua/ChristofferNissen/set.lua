@@ -53,21 +53,8 @@ vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldenable = false
 
--- custom filetypes
-vim.filetype.add({
-    pattern = {
-        ["release%-pipelines?%.ya?ml"] = "azure_pipelines",
-        ["azure%-pipelines?%.ya?ml"] = "azure_pipelines",
-        [".azure%-pipelines/.*%.ya?ml"] = "azure_pipelines",
-    },
-})
-vim.treesitter.language.register("yaml", "azure_pipelines")
-
 vim.filetype.add({
     extension = {
         tf = "terraform",
     },
 })
-
--- Avante
-vim.opt.laststatus = 3
