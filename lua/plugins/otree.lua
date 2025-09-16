@@ -37,7 +37,7 @@ return {
                 win_size = 35,
                 open_on_startup = false,
                 use_default_keymaps = true,
-                hijack_netrw = false,
+                hijack_netrw = true,
                 show_hidden = true,
                 show_ignore = true,
                 git_signs = true,

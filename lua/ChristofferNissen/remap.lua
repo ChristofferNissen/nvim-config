@@ -95,21 +95,21 @@ end, { desc = "CopilotChat - Save file" })
 
 -- persistence
 -- load the session for the current directory
-vim.keymap.set("n", "<leader>gs", function()
+vim.keymap.set("n", "<leader>bs", function()
     require("persistence").load()
 end, { desc = "Load current session" })
 
 -- select a session to load
-vim.keymap.set("n", "<leader>gS", function()
+vim.keymap.set("n", "<leader>bS", function()
     require("persistence").select()
 end, { desc = "Select session to load" })
 
 -- load the last session
-vim.keymap.set("n", "<leader>gl", function()
+vim.keymap.set("n", "<leader>bl", function()
     require("persistence").load({ last = true })
 end, { desc = "Load last session" })
 
 -- stop Persistence => session won't be saved on exit
-vim.keymap.set("n", "<leader>gd", function()
-    require("persistence").stop()
-end, { desc = "Stop Persistence" })
+-- vim.keymap.set("n", "<leader>gd", function()
+--     require("persistence").stop()
+-- end, { desc = "Stop Persistence" })
