@@ -18,8 +18,6 @@ return {
                 "black",
                 -- yaml
                 "gh",
-                "gh-actions-language-server",
-                "yaml-language-server",
                 "yamlfix",
                 "yamlfmt",
                 "yamllint",
@@ -39,7 +37,6 @@ return {
                 "stylua",
                 -- kubernetes
                 "kube-linter",
-                "helm-ls",
                 -- nix
                 "nixfmt",
                 "nixpkgs-fmt",
@@ -52,7 +49,6 @@ return {
                 -- "csharp-language-server",
                 "csharpier",
                 "netcoredbg",
-                "azure-pipelines-language-server",
                 -- terraform
                 "terraform",
                 "terraform-ls",

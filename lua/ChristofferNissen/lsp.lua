@@ -1,15 +1,12 @@
 -- LSP configs in lsp/
 vim.lsp.enable({
-    "azure_pipelines_ls",
     "bashls",
     "cssls",
     "docker_compose_language_service",
     "dockerls",
-    "gh_actions_ls",
     "gleam",
     "gopls",
     "harper-ls",
-    "helm-ls",
     "jsonls",
     "kotlin-lsp",
     "luals",
@@ -20,7 +17,6 @@ vim.lsp.enable({
     "templ",
     "terraform-ls",
     "typescript-language-server",
-    "yamlls",
     "zls",
 })
 
@@ -78,41 +74,41 @@ vim.api.nvim_create_autocmd("LspAttach", {
 --     end,
 -- })
 
--- YamlShowSchema
-local function extract_schema_from_hover(text)
-    -- Match the first line that starts with one or more '#' and a space, then capture the rest
-    local schema = text:match("^#+%s*(.-)\n")
-    if schema and #schema > 0 then
-        return schema
-    end
-    return ""
-end
-
-vim.api.nvim_create_user_command("YamlShowSchema", function()
-    vim.lsp.buf_request(0, "textDocument/hover", {
-        textDocument = vim.lsp.util.make_text_document_params(),
-        position = { line = 0, character = 0 },
-    }, function(_, result)
-        if not result or not result.contents then
-            vim.notify("No schema found in hover", vim.log.levels.DEBUG)
-            return
-        end
-        local contents = result.contents
-        local text = ""
-        if type(contents) == "table" then
-            if contents.value then
-                text = contents.value
-            elseif contents[1] then
-                text = contents[1].value or contents[1]
-            end
-        elseif type(contents) == "string" then
-            text = contents
-        end
-        local schema = extract_schema_from_hover(text)
-        if schema ~= "" then
-            vim.notify("Current YAML schema: " .. schema, vim.log.levels.INFO)
-        else
-            vim.notify("No schema found in hover", vim.log.levels.WARN)
-        end
-    end)
-end, {})
+-- -- YamlShowSchema
+-- local function extract_schema_from_hover(text)
+--     -- Match the first line that starts with one or more '#' and a space, then capture the rest
+--     local schema = text:match("^#+%s*(.-)\n")
+--     if schema and #schema > 0 then
+--         return schema
+--     end
+--     return ""
+-- end
+--
+-- vim.api.nvim_create_user_command("YamlShowSchema", function()
+--     vim.lsp.buf_request(0, "textDocument/hover", {
+--         textDocument = vim.lsp.util.make_text_document_params(),
+--         position = { line = 0, character = 0 },
+--     }, function(_, result)
+--         if not result or not result.contents then
+--             vim.notify("No schema found in hover", vim.log.levels.DEBUG)
+--             return
+--         end
+--         local contents = result.contents
+--         local text = ""
+--         if type(contents) == "table" then
+--             if contents.value then
+--                 text = contents.value
+--             elseif contents[1] then
+--                 text = contents[1].value or contents[1]
+--             end
+--         elseif type(contents) == "string" then
+--             text = contents
+--         end
+--         local schema = extract_schema_from_hover(text)
+--         if schema ~= "" then
+--             vim.notify("Current YAML schema: " .. schema, vim.log.levels.INFO)
+--         else
+--             vim.notify("No schema found in hover", vim.log.levels.WARN)
+--         end
+--     end)
+-- end, {})

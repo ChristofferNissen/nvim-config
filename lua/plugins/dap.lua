@@ -232,7 +232,6 @@ return {
             end
 
             vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "Error" })
-            -- require("dap.ext.vscode").load_launchjs(nil, {})
 
             -- setup dap config by VsCode launch.json file
             local vscode = require("dap.ext.vscode")
