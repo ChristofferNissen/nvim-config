@@ -2,15 +2,38 @@ return {
     {
         "folke/trouble.nvim",
         opts = {
+            icons = {
+                indent = {
+                    middle = " ",
+                    last = " ",
+                    top = " ",
+                    ws = "│  ",
+                },
+            },
+            ---@type table<string, trouble.Mode>
             modes = {
-                test = {
-                    mode = "diagnostics",
-                    preview = {
-                        type = "split",
-                        relative = "win",
-                        position = "right",
-                        size = 0.3,
+                diagnostics = {
+                    groups = {
+                        { "filename", format = "{file_icon} {basename:Title} {count}" },
                     },
+                    filter = {
+                        any = {
+                            buf = 0, -- current buffer
+                            {
+                                severity = vim.diagnostic.severity.ERROR, -- errors only
+                                -- limit to files in the current project
+                                function(item)
+                                    return item.filename:find((vim.loop or vim.uv).cwd(), 1, true)
+                                end,
+                            },
+                        },
+                    },
+                    -- preview = {
+                    --     type = "split",
+                    --     relative = "win",
+                    --     position = "right",
+                    --     size = 0.4,
+                    -- },
                 },
             },
         }, -- for default options, refer to the configuration section for custom setup.

@@ -29,9 +29,28 @@ vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(event)
         local opts = { buffer = event.buf }
 
-        -- vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-        vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-        vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, opts)
+        -- CUSTOM
+        vim.keymap.set("n", "gws", "<cmd>lua vim.lsp.buf.workspace_symbol()<cr>", opts)
+        vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
+
+        -- GLOBAL
+        vim.keymap.set("n", "grn", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
+        vim.keymap.set("n", "gra", function()
+            require("tiny-code-action").code_action()
+        end, { noremap = true, silent = true })
+        vim.keymap.set("n", "grr", "<cmd>lua vim.lsp.buf.references()<cr>", opts)
+        vim.keymap.set("n", "gri", "<cmd>lua vim.lsp.buf.implementation()<cr>", opts)
+        vim.keymap.set("n", "grt", "<cmd>lua vim.lsp.buf.type_definition()<cr>", opts)
+        vim.keymap.set("n", "grd", "<cmd>lua vim.lsp.buf.declaration()<cr>", opts)
+        vim.keymap.set("n", "gO", "<cmd>lua vim.lsp.buf.document_symbol()<cr>", opts)
+        vim.keymap.set("i", "<C-s>", "<cmd>lua vim.lsp.buf.signature_help()<cr>", opts)
+
+        -- BUFFER-LOCAL
+        -- vim.keymap.set("n", "<C-Space>", "<C-x><C-o>", opts)
+        vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
+        vim.keymap.set({ "n", "x" }, "gq", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", opts)
+
+        -- DIAGNOSTICS
         vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts)
         vim.keymap.set("n", "[d", function()
             vim.diagnostic.get_prev({ float = true })
@@ -39,44 +58,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
         vim.keymap.set("n", "]d", function()
             vim.diagnostic.get_next({ float = true })
         end, opts)
-        -- vim.keymap.set("n", "<leader>vca", vim.lsp.buf.code_action, opts)
-        -- vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, opts)
-        vim.keymap.set("n", "<leader>a", function()
-            require("tiny-code-action").code_action()
-        end, { noremap = true, silent = true })
-        vim.keymap.set("n", "<leader>vrr", vim.lsp.buf.references, opts)
-        vim.keymap.set("n", "<leader>vrn", vim.lsp.buf.rename, opts)
-        vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
-
-        -- beta
-        -- vim.keymap.set('n', '<C-Space>', '<C-x><C-o>', opts)
-        vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
-        vim.keymap.set({ "n", "x" }, "gq", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", opts)
-
-        vim.keymap.set("n", "grt", "<cmd>lua vim.lsp.buf.type_definition()<cr>", opts)
-        vim.keymap.set("n", "grd", "<cmd>lua vim.lsp.buf.declaration()<cr>", opts)
     end,
 })
-
--- Disabled in favor of Conform
--- format on save
--- vim.api.nvim_create_autocmd("LspAttach", {
---     callback = function(args)
---         local client = vim.lsp.get_client_by_id(args.data.client_id)
---         if client == nil then
---             return
---         end
---
---         if client:supports_method("textDocument/formatting") then
---             vim.api.nvim_create_autocmd("BufWritePre", {
---                 buffer = args.buf,
---                 callback = function()
---                     vim.lsp.buf.format({ bufnr = args.buf, id = client.id })
---                 end,
---             })
---         end
---     end,
--- })
 
 -- YamlShowSchema
 local function extract_schema_from_hover(text)
