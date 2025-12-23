@@ -188,19 +188,27 @@ return {
     -- ============================================
     {
         "numToStr/Comment.nvim",
+        dependencies = {
+            "JoosepAlviste/nvim-ts-context-commentstring",
+        },
         opts = {},
         event = { "BufReadPost", "BufNewFile" },
     },
     {
         "windwp/nvim-autopairs",
         event = "InsertEnter",
-        opts = {},
+        config = true,
+        opts = {
+            disable_filetype = { "TelescopePrompt", "vim" },
+        },
     },
     {
         "kylechui/nvim-surround",
         version = "^3.0.0",
         event = "VeryLazy",
-        opts = {},
+        config = function()
+            require("nvim-surround").setup({})
+        end,
     },
 
     -- ============================================
