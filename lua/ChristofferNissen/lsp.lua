@@ -10,6 +10,7 @@ vim.lsp.enable({
     "gopls",
     "harper-ls",
     "helm-ls",
+    "hyprls",
     "jsonls",
     "kotlin-lsp",
     "luals",

@@ -44,6 +44,7 @@ return {
                 "nixfmt",
                 "nixpkgs-fmt",
                 "nil",
+                "hyprls",
                 -- c#
                 "clang-format",
                 "roslyn",
