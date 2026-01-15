@@ -51,6 +51,10 @@ return {
                 "yaml",
                 "c",
                 "c_sharp",
+                "fsharp",
+                "sql",
+                "json",
+                "xml",
                 "dockerfile",
                 "dot",
                 "hyprlang",
@@ -73,6 +77,8 @@ return {
                 "java",
                 "powershell",
                 "latex",
+                "typescript",
+                "tsx",
             },
             highlight = {
                 -- `false` will disable the whole extension

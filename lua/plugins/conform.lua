@@ -6,9 +6,10 @@ return {
         keys = {
             {
                 -- Customize or remove this keymap to your liking
-                "<leader>f",
+                "<leader>cf",
                 function()
                     require("conform").format({ async = true })
+                    vim.notify("Formatted buffer", vim.log.levels.INFO)
                 end,
                 mode = "",
                 desc = "Format buffer",
@@ -56,7 +57,7 @@ return {
             },
             -- Set up format-on-save
             -- format_on_save = { timeout_ms = 500 },
-            format_after_save = { async = true },
+            -- format_after_save = { async = true },
 
             -- Customize formatters
             formatters = {

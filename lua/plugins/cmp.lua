@@ -16,9 +16,22 @@ return {
                 end,
                 dependencies = {
                     "rafamadriz/friendly-snippets",
+                    {
+                        "saghen/blink.compat",
+                        optional = true,
+                        opts = {},
+                        version = not vim.g.lazyvim_blink_main and "*",
+                    },
                 },
             },
             "fang2hou/blink-copilot",
+            {
+                "catppuccin",
+                optional = true,
+                opts = {
+                    integrations = { blink_cmp = true },
+                },
+            },
         },
         -- use a release tag to download pre-built binaries
         version = "1.*",
@@ -34,16 +47,40 @@ return {
                     and vim.bo.buftype ~= "prompt"
                     and vim.b.completion ~= false
             end,
-            completion = { documentation = { auto_show = false } },
+            completion = {
+                accept = {
+                    auto_brackets = {
+                        enabled = true,
+                    },
+                },
+                menu = {
+                    draw = {
+                        treesitter = { "lsp" },
+                    },
+                },
+                documentation = { auto_show = true, auto_show_delay_ms = 200 },
+                ghost_text = { enabled = vim.g.ai_cmp },
+            },
             snippets = { preset = "luasnip" },
             sources = {
-                default = { "copilot", "lazydev", "lsp", "path", "snippets", "buffer" },
+                default = { "copilot", "easy-dotnet", "lsp", "path", "snippets", "buffer" },
+                per_filetype = {
+                    lua = { inherit_defaults = true, "lazydev" },
+                    -- charp = {inherit_defaults = true, "easy-dotnet"
+                },
                 providers = {
                     lazydev = {
                         name = "LazyDev",
                         module = "lazydev.integrations.blink",
                         -- make lazydev completions top priority (see `:h blink.cmp`)
                         score_offset = 100,
+                    },
+                    ["easy-dotnet"] = {
+                        name = "easy-dotnet",
+                        enabled = true,
+                        module = "easy-dotnet.completion.blink",
+                        score_offset = 10000,
+                        async = true,
                     },
                     copilot = {
                         name = "copilot",

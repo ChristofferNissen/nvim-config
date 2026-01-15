@@ -2,6 +2,7 @@ return {
     {
         "mfussenegger/nvim-dap",
         recommended = true,
+        lazy = true,
         dependencies = {
             { "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
             -- {
@@ -36,9 +37,10 @@ return {
             --     end,
             -- },
             { "leoluz/nvim-dap-go" },
+            { "nicholasmata/nvim-dap-cs", dependencies = { "mfussenegger/nvim-dap" } },
             {
                 "williamboman/mason.nvim",
-                opts = { ensure_installed = { "delve" } },
+                opts = { ensure_installed = { "delve", "netcoredbg" } },
             },
             {
                 "theHamsta/nvim-dap-virtual-text",
@@ -130,6 +132,7 @@ return {
         config = function()
             local dap = require("dap")
             local ui = require("dapui")
+            require("nvim-dap-virtual-text").setup()
 
             dap.set_log_level("INFO")
 
@@ -143,25 +146,25 @@ return {
                     toggle = "t",
                 },
                 expand_lines = vim.fn.has("nvim-0.7"),
-                layouts = {
-                    {
-                        elements = {
-                            "scopes",
-                        },
-                        size = 0.3,
-                        position = "right",
-                    },
-                    {
-                        elements = {
-                            -- "watches",
-                            "console",
-                            "repl",
-                            "breakpoints",
-                        },
-                        size = 0.3,
-                        position = "bottom",
-                    },
-                },
+                -- layouts = {
+                --     {
+                --         elements = {
+                --             "scopes",
+                --         },
+                --         size = 0.3,
+                --         position = "right",
+                --     },
+                --     {
+                --         elements = {
+                --             -- "watches",
+                --             "console",
+                --             "repl",
+                --             "breakpoints",
+                --         },
+                --         size = 0.3,
+                --         position = "bottom",
+                --     },
+                -- },
                 floating = {
                     max_height = nil,
                     max_width = nil,
@@ -175,6 +178,12 @@ return {
                     max_type_length = nil,
                 },
             })
+
+            -- dap.adapters.coreclr = {
+            --     type = "executable",
+            --     command = vim.fn.exepath("netcoredbg"),
+            --     args = { "--interpreter=vscode" },
+            -- }
 
             -- Go
             dap.adapters.go = {

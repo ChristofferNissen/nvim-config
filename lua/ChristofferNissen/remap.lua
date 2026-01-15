@@ -110,6 +110,6 @@ vim.keymap.set("n", "<leader>bl", function()
 end, { desc = "Load last session" })
 
 -- stop Persistence => session won't be saved on exit
--- vim.keymap.set("n", "<leader>gd", function()
---     require("persistence").stop()
--- end, { desc = "Stop Persistence" })
+vim.keymap.set("n", "<leader>bd", function()
+    require("persistence").stop()
+end, { desc = "Stop Persistence" })

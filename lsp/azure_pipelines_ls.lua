@@ -8,9 +8,7 @@ local schemastore_schemas = require("schemastore").yaml.schemas({
 return {
     cmd = { "azure-pipelines-language-server", "--stdio" },
     filetypes = { "azure_pipelines" },
-    -- filetypes = { "yaml" },
     single_file_support = true,
-    -- settings = {},
     capabilities = {
         textDocument = {
             foldingRange = {

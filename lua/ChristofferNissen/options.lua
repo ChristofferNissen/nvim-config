@@ -7,6 +7,8 @@ vim.loader.enable()
 -- provided by rust-analyzer.
 vim.g.lazyvim_rust_diagnostics = "rust-analyzer"
 
+vim.g.editorconfig = true
+
 -- Configure diagnostics
 vim.diagnostic.config({
     virtual_text = true,

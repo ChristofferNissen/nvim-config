@@ -48,7 +48,6 @@ return {
                 -- c#
                 "clang-format",
                 "roslyn",
-                "rzls",
                 -- "omnisharp",
                 -- "csharp-language-server",
                 "csharpier",
