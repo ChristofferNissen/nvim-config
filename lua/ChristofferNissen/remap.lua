@@ -33,6 +33,11 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 
 vim.keymap.set("n", "<leader>q", ":copen<CR>", { noremap = true, silent = true })
 
+-- tiny code action
+vim.keymap.set({ "n", "x" }, "<leader>ca", function()
+	require("tiny-code-action").code_action()
+end, { noremap = true, silent = true })
+
 -- terraform doc
 vim.api.nvim_set_keymap("n", "<leader>ptd", ":OpenDoc<CR>", { noremap = true, silent = true })
 
