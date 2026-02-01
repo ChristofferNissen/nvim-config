@@ -5,37 +5,6 @@ return {
         lazy = true,
         dependencies = {
             { "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
-            -- {
-            --     "igorlfs/nvim-dap-view",
-            --     ---@module 'dap-view'
-            --     ---@type dapview.Config
-            --     opts = {
-            --         windows = {
-            --             terminal = {
-            --                 -- Use the actual names for the adapters you want to hide
-            --                 hide = { "go" }, -- `go` is known to not use the terminal.
-            --             },
-            --         },
-            --     },
-            --     config = function(_, opts)
-            --         require("dap-view").setup(opts)
-            --
-            --         -- Auto launch
-            --         local dap, dv = require("dap"), require("dap-view")
-            --         dap.listeners.before.attach["dap-view-config"] = function()
-            --             dv.open()
-            --         end
-            --         dap.listeners.before.launch["dap-view-config"] = function()
-            --             dv.open()
-            --         end
-            --         dap.listeners.before.event_terminated["dap-view-config"] = function()
-            --             dv.close()
-            --         end
-            --         dap.listeners.before.event_exited["dap-view-config"] = function()
-            --             dv.close()
-            --         end
-            --     end,
-            -- },
             { "leoluz/nvim-dap-go" },
             { "nicholasmata/nvim-dap-cs", dependencies = { "mfussenegger/nvim-dap" } },
             {

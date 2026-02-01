@@ -35,16 +35,11 @@ vim.keymap.set("n", "<leader>q", ":copen<CR>", { noremap = true, silent = true }
 
 -- tiny code action
 vim.keymap.set({ "n", "x" }, "<leader>ca", function()
-	require("tiny-code-action").code_action()
+    require("tiny-code-action").code_action()
 end, { noremap = true, silent = true })
 
 -- terraform doc
 vim.api.nvim_set_keymap("n", "<leader>ptd", ":OpenDoc<CR>", { noremap = true, silent = true })
-
--- inc-rename
-vim.keymap.set("n", "<leader>rn", function()
-    return ":IncRename " .. vim.fn.expand("<cword>")
-end, { expr = true })
 
 -- Bufferline replacement
 vim.keymap.set("n", "H", ":bprev<CR>", { noremap = true, silent = true })

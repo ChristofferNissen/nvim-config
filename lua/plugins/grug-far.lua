@@ -10,17 +10,28 @@ return {
                 -- options, see Configuration section below
                 headerMaxWidth = 80,
             })
-            vim.keymap.set({ "n", "x" }, "<leader>bi", function()
-                require("grug-far").open({
-                    transienf = true,
-                    visualSelectionUsage = "operate-within-range",
-                    prefills = { paths = vim.fn.expand("%") },
-                })
-            end, { desc = "grug-far: Search within range" })
-            vim.keymap.set({ "n", "x" }, "<leader>bf", function()
-                -- require("grug-far").open({ visualSelectionUsage = "operate-within-range" })
-                require("grug-far").open({ transient = true })
-            end, { desc = "grug-far: Search within range" })
         end,
+        keys = {
+            {
+                "<leader>bi",
+                function()
+                    require("grug-far").open({
+                        transient = true,
+                        visualSelectionUsage = "operate-within-range",
+                        prefills = { paths = vim.fn.expand("%") },
+                    })
+                end,
+                mode = { "n", "x" },
+                desc = "grug-far: Search within range",
+            },
+            {
+                "<leader>bf",
+                function()
+                    require("grug-far").open({ transient = true })
+                end,
+                mode = { "n", "x" },
+                desc = "grug-far: Search within range",
+            },
+        },
     },
 }
