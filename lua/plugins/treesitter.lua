@@ -60,7 +60,7 @@ return {
                 "hyprlang",
                 "markdown",
                 "markdown_inline",
-                "rust",/
+                "rust",
                 "ron",
                 "diff",
                 "bash",
