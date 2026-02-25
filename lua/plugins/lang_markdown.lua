@@ -6,6 +6,7 @@ return {
             require("lazy").load({ plugins = { "markdown-preview.nvim" } })
             vim.fn["mkdp#util#install"]()
         end,
+        ft = { "markdown", "norg", "rmd", "org", "copilot-chat"},
         keys = {
             {
                 "<leader>mp",

@@ -1,14 +1,15 @@
 return {
     {
         "nvim-neotest/neotest",
+        ft = { "go", "cs", "fsharp", "vb" },
         dependencies = {
             "nvim-neotest/nvim-nio",
             "nvim-lua/plenary.nvim",
             "antoinemadec/FixCursorHold.nvim",
             "nvim-treesitter/nvim-treesitter",
-            "fredrikaverpil/neotest-golang",
+            { "fredrikaverpil/neotest-golang", ft = "go" },
             -- "Issafalcon/neotest-dotnet",
-            "nsidorenco/neotest-vstest",
+            { "nsidorenco/neotest-vstest", ft = { "cs", "fsharp", "vb" } },
         },
         config = function()
             require("neotest").setup({

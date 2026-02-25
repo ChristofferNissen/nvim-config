@@ -15,7 +15,7 @@ return {
             },
             {
                 "Afourcat/treesitter-terraform-doc.nvim",
-                event = { "BufReadPost", "BufNewFile" },
+                ft = { "terraform", "hcl"},
                 config = function()
                     require("treesitter-terraform-doc").setup({
                         command_name = "OpenDoc",
@@ -60,7 +60,7 @@ return {
                 "hyprlang",
                 "markdown",
                 "markdown_inline",
-                "rust",
+                "rust",/
                 "ron",
                 "diff",
                 "bash",

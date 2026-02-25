@@ -1,7 +1,7 @@
 return {
     {
         "ChristofferNissen/boole.nvim",
-        event = "VeryLazy",
+        event = "BufReadPre",
         lazy = true,
         config = function()
             require("boole").setup({

@@ -5,7 +5,7 @@ return {
             "nvim-treesitter/nvim-treesitter",
         },
         ft = { "yaml", "json", "azure_pipelines" },
-        event = "VeryLazy",
+        -- event = "VeryLazy",
         opts = {
             ft = {
                 json = true,

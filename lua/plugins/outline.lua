@@ -8,5 +8,6 @@ return {
                 -- Your setup opts here (leave empty to use defaults)
             })
         end,
+        event = "VeryLazy"
     },
 }

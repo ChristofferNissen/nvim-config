@@ -11,6 +11,7 @@ return {
                 headerMaxWidth = 80,
             })
         end,
+        event = "VeryLazy", -- or BufReadPost
         keys = {
             {
                 "<leader>bi",

@@ -2,9 +2,9 @@ return {
     {
         "fredrikaverpil/godoc.nvim",
         version = "*",
+        ft = "go",
         dependencies = {
             { "nvim-telescope/telescope.nvim" }, -- optional
-            -- { "folke/snacks.nvim" },    -- optional
             {
                 "nvim-treesitter/nvim-treesitter",
                 opts = {

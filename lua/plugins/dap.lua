@@ -5,8 +5,8 @@ return {
         lazy = true,
         dependencies = {
             { "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
-            { "leoluz/nvim-dap-go" },
-            { "nicholasmata/nvim-dap-cs", dependencies = { "mfussenegger/nvim-dap" } },
+            { "leoluz/nvim-dap-go", ft = "go" },
+            { "nicholasmata/nvim-dap-cs", ft = { "cs", "fsharp", "vb" }, dependencies = { "mfussenegger/nvim-dap" } },
             {
                 "williamboman/mason.nvim",
                 opts = { ensure_installed = { "delve", "netcoredbg" } },

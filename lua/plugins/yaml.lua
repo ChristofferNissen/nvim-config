@@ -1,18 +1,11 @@
 return {
     {
         "stephpy/vim-yaml",
+        ft = "yaml",
     },
     {
         "towolf/vim-helm",
-    },
-    {
-        "someone-stole-my-name/yaml-companion.nvim",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "neovim/nvim-lspconfig",
-        },
-        opts = {},
-        ft = { "yaml" }, -- Load only for YAML files
+        ft = { "yaml", "helm" },
     },
     {
         "ChristofferNissen/yaml-schema-detect.nvim",
@@ -25,8 +18,7 @@ return {
     },
     {
         "ChristofferNissen/azure-pipelines.vim",
-        event = { "BufReadPre", "BufNewFile" },
-        ft = "yaml",
+        ft = { "yaml", "azure_pipelines" },
         config = function()
             require("azure_pipelines")
         end,

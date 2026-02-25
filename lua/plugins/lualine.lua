@@ -72,7 +72,7 @@ end
 
 vim.g.gitblame_display_virtual_text = 0 -- Disable virtual text
 local git_blame = require("gitblame")
-local job_indicator = { require("easy-dotnet.ui-modules.jobs").lualine }
+-- local job_indicator = { require("easy-dotnet.ui-modules.jobs").lualine }
 
 return {
     {
@@ -91,7 +91,8 @@ return {
                 globalstatus = true,
             },
             sections = {
-                lualine_a = { "mode", job_indicator },
+                -- lualine_a = { "mode", job_indicator },
+                lualine_a = { "mode" },
                 lualine_b = {
                     "branch",
                     "diff",

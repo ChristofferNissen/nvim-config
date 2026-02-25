@@ -42,5 +42,5 @@ return {
         },
     },
     root_dir = vim.fs.dirname(vim.api.nvim_buf_get_name(0)),
-    root_markers = { "azure-pipelines.yml" },
+    -- root_markers = { "azure-pipelines.yml" },
 }

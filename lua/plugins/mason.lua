@@ -88,13 +88,13 @@ return {
                 -- typescript
                 "typescript-language-server",
                 -- java
-                "jdtls",
-                "java-debug-adapter",
-                "java-test",
-                "ktlint",
+                -- "jdtls",
+                -- "java-debug-adapter",
+                -- "java-test",
+                -- "ktlint",
                 -- kotlin
-                "kotlin-lsp",
-                "ktfmt",
+                -- "kotlin-lsp",
+                -- "ktfmt",
                 -- SQL
                 "sqlls",
                 "sqruff",
