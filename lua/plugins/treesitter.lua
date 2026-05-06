@@ -3,6 +3,7 @@ return {
         "nvim-treesitter/nvim-treesitter",
         event = { "BufReadPost", "BufNewFile" },
         main = "nvim-treesitter.configs",
+        branch = "main",
         dependencies = {
             {
                 "nvim-treesitter/nvim-treesitter-textobjects",
@@ -26,11 +27,11 @@ return {
                 end,
             },
         },
-        config = function(_, opts)
-            require("nvim-treesitter.configs").setup(opts)
-            -- This is needed to ensure that the treesitter-terraform-doc works correctly
-            vim.cmd([[command! -nargs=0 OpenDoc lua require('treesitter-terraform-doc').open_doc()]])
-        end,
+        -- config = function(_, opts)
+        --     require("nvim-treesitter.configs").setup(opts)
+        --     -- This is needed to ensure that the treesitter-terraform-doc works correctly
+        --     vim.cmd([[command! -nargs=0 OpenDoc lua require('treesitter-terraform-doc').open_doc()]])
+        -- end,
         opts = {
             autotag = {
                 enable = true,
