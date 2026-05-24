@@ -1,7 +1,7 @@
 return {
     {
         "saghen/blink.cmp",
-        lazy = true,
+        -- lazy = true,
         dependencies = {
             {
                 "L3MON4D3/LuaSnip",

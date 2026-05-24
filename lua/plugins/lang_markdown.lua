@@ -1,12 +1,19 @@
 return {
     {
+        "OXY2DEV/markview.nvim",
+        lazy = false,
+
+        -- Completion for `blink.cmp`
+        dependencies = { "saghen/blink.cmp" },
+    },
+    {
         "iamcco/markdown-preview.nvim",
         cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
         build = function()
             require("lazy").load({ plugins = { "markdown-preview.nvim" } })
             vim.fn["mkdp#util#install"]()
         end,
-        ft = { "markdown", "norg", "rmd", "org", "copilot-chat"},
+        ft = { "markdown", "norg", "rmd", "org", "copilot-chat" },
         keys = {
             {
                 "<leader>mp",
