@@ -28,7 +28,7 @@ return {
                 bash = { "shfmt", "shellharden" },
                 zsh = { "shfmt", "shellharden" },
                 -- Go
-                go = { "gofumpt", "goimports", "golangci-lint" },
+                go = { "gofumpt", "goimports" },
                 -- C, C++, Objective-C
                 -- c = { "clang-format" },
                 cpp = { "clang-format" },

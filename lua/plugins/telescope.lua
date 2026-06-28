@@ -9,15 +9,6 @@ return {
                 event = "VeryLazy",
             },
             {
-                "nvim-telescope/telescope-file-browser.nvim",
-                event = "VeryLazy",
-                dependencies = {
-                    "nvim-telescope/telescope.nvim",
-                    "nvim-lua/plenary.nvim",
-                    "echasnovski/mini.icons",
-                },
-            },
-            {
                 "nvim-telescope/telescope-ui-select.nvim",
                 event = "VeryLazy",
             },
@@ -25,7 +16,6 @@ return {
                 "benfowler/telescope-luasnip.nvim",
                 event = "VeryLazy",
             },
-            { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
             {
                 "ANGkeith/telescope-terraform-doc.nvim",
                 event = "VeryLazy",
@@ -45,7 +35,6 @@ return {
                 dependencies = {
                     "kkharji/sqlite.lua",
                     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-                    -- { "nvim-telescope/telescope-fzy-native.nvim" },
                 },
             },
         },
@@ -90,13 +79,6 @@ return {
                 desc = "telescope buffers"
             },
             {
-                "<leader>pv",
-                -- "<leader>e",
-                mode = "n",
-                function() require("telescope").extensions.file_browser.file_browser() end,
-                desc = "telescope file browser"
-            },
-            {
                 "<leader>pr",
                 mode = "n",
                 function() require("telescope.builtin").resume() end,
@@ -125,11 +107,6 @@ return {
             local themes = require("telescope.themes")
             local opts = {
                 extensions = {
-                    file_browser = {
-                        respect_gitignore = false,
-                        hijack_netrw = false,
-                        hidden = true,
-                    },
                     luasnip = themes.get_dropdown({
                         -- border = false,
                         preview = {
@@ -139,7 +116,6 @@ return {
                 },
             }
             require("telescope").setup(opts)
-            require("telescope").load_extension("file_browser")
             require("telescope").load_extension("terraform_doc")
             require("telescope").load_extension("terraform")
             require("telescope").load_extension("ui-select")

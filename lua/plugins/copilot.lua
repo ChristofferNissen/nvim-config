@@ -4,13 +4,15 @@ return {
         cmd = "Copilot",
         build = ":Copilot auth",
         event = "BufReadPost",
+        dependencies = {
+            "copilotlsp-nvim/copilot-lsp",
+        },
         opts = {
-            -- copilot_model = "gpt-4o-copilot",
             panel = { enabled = false },
             filetypes = {
                 markdown = true,
                 help = true,
             },
         },
-    }
+    },
 }

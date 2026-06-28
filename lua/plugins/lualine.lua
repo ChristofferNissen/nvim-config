@@ -70,8 +70,6 @@ local function yaml_schema_component()
     return yaml_schema_cache[bufnr] or ""
 end
 
-vim.g.gitblame_display_virtual_text = 0 -- Disable virtual text
-local git_blame = require("gitblame")
 -- local job_indicator = { require("easy-dotnet.ui-modules.jobs").lualine }
 
 return {
@@ -114,7 +112,6 @@ return {
                         end,
                     },
                     { "filename" },
-                    { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available },
                 },
 
                 lualine_x = {

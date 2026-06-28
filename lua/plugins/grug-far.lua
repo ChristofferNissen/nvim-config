@@ -11,7 +11,6 @@ return {
                 headerMaxWidth = 80,
             })
         end,
-        event = "VeryLazy", -- or BufReadPost
         keys = {
             {
                 "<leader>bi",
@@ -23,7 +22,7 @@ return {
                     })
                 end,
                 mode = { "n", "x" },
-                desc = "grug-far: Search within range",
+                desc = "grug-far: Search within file",
             },
             {
                 "<leader>bf",
@@ -31,7 +30,7 @@ return {
                     require("grug-far").open({ transient = true })
                 end,
                 mode = { "n", "x" },
-                desc = "grug-far: Search within range",
+                desc = "grug-far: Search/replace",
             },
         },
     },

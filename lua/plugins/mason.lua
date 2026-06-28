@@ -12,7 +12,8 @@ return {
             },
             ensure_installed = {
                 "css-lsp",
-                "harper-ls",
+                -- "harper-ls",
+                "codebook",
                 "ast-grep",
                 -- python
                 "black",
@@ -46,8 +47,8 @@ return {
                 "nil",
                 "hyprls",
                 -- c#
-                "clang-format",
-                "roslyn",
+                -- "clang-format",
+                -- "roslyn",
                 -- "omnisharp",
                 -- "csharp-language-server",
                 "csharpier",
@@ -84,7 +85,7 @@ return {
                 "golangci-lint",
                 "templ",
                 -- rust
-                "rust-analyzer",
+                -- "rust-analyzer",
                 -- typescript
                 "typescript-language-server",
                 -- java

@@ -28,7 +28,6 @@ return {
                 dependencies = { { "echasnovski/mini.icons", opts = {} } },
                 -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
                 lazy = false,
-                event = "VeryLazy",
             },
             { "echasnovski/mini.icons", opts = {} },
         },
@@ -43,7 +42,7 @@ return {
                 git_signs = true,
                 ignore_patterns = { "node_modules", ".git", ".cache" },
             })
-            vim.keymap.set("n", "<leader>t", "<Cmd>Otree<CR>")
+            vim.keymap.set("n", "<leader>t", "<Cmd>Otree<CR>", { desc = "Toggle Otree file explorer" })
         end,
     },
 }

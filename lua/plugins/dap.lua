@@ -80,7 +80,7 @@ return {
                 mode = "n",
                 function()
                     require("dap").clear_breakpoints()
-                    require("notify")("Breakpoints cleared", "warn", { title = "DAP" })
+                    vim.notify("Breakpoints cleared", vim.log.levels.WARN, { title = "DAP" })
                 end,
                 desc = "dap clear",
             },
@@ -93,7 +93,7 @@ return {
                     require("dapui").toggle({})
                     require("dap").terminate()
                     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-w>=", false, true, true), "n", false)
-                    require("notify")("Debugger session ended", "warn", { title = "DAP" })
+                    vim.notify("Debugger session ended", vim.log.levels.WARN, { title = "DAP" })
                 end,
                 desc = "",
             },

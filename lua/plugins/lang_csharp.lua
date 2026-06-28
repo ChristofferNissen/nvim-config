@@ -1,11 +1,18 @@
 return {
     {
         "GustavEikaas/easy-dotnet.nvim",
-        lazy = true,
         dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
         config = function()
             require("easy-dotnet").setup({
+                projz_lsp = {
+                    enabled = true,
+                },
                 lsp = {
+                    enabled = true,
+                    preload_roslyn = true,
+                    roslynator_enabled = true,
+                    easy_dotnet_analyzer_enabled = true,
+                    aute_refresh_codelens = true,
                     analyzer_assemblies = {
                         "/home/cn/sonaranalyzers/SonarAnalyzer.CSharp.dll",
                     },

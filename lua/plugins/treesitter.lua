@@ -16,7 +16,7 @@ return {
             -- },
             {
                 "Afourcat/treesitter-terraform-doc.nvim",
-                ft = { "terraform", "hcl"},
+                ft = { "terraform", "hcl" },
                 config = function()
                     require("treesitter-terraform-doc").setup({
                         command_name = "OpenDoc",

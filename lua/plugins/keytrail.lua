@@ -13,7 +13,7 @@ return {
                 azure_pipelines = true,
             },
         },
-        config = function(opts)
+        config = function(_, opts)
             require("keytrail").setup(opts)
         end,
     },
