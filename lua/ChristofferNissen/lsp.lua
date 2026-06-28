@@ -5,18 +5,19 @@ vim.lsp.enable({
     "cssls",
     "docker_compose_language_service",
     "dockerls",
-    "gh_actions_ls",
+    -- "gh_actions_ls",
     "gleam",
     "gopls",
-    "harper-ls",
+    -- "harper-ls",
+    "codebook",
     "helm-ls",
     "hyprls",
     "jsonls",
-    "kotlin-lsp",
+    -- "kotlin-lsp",
     "luals",
     "marksman",
     "nix",
-    "rust_analyzer",
+    -- "rust_analyzer",
     "sqlls",
     "templ",
     "terraform-ls",
@@ -49,7 +50,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
         -- BUFFER-LOCAL
         -- vim.keymap.set("n", "<C-Space>", "<C-x><C-o>", opts)
         vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
-        vim.keymap.set({ "n", "x" }, "gq", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", opts)
+        vim.keymap.set({ "n", "x" }, "gq", function()
+            require("conform").format({ async = true, lsp_format = "fallback" })
+        end, vim.tbl_extend("force", opts, { desc = "Format (conform)" }))
 
         -- DIAGNOSTICS
         vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts)

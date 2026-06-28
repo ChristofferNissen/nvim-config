@@ -42,7 +42,7 @@ vim.opt.list = true
 vim.opt.listchars:append("space:.")
 vim.opt.listchars:append("eol:󱞣")
 vim.o.timeout = true
-vim.o.timeoutlen = 1000
+vim.o.timeoutlen = 300
 
 -- Disabled because of harper-ls
 -- vim.o.spell = true

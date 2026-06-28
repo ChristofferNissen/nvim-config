@@ -18,8 +18,9 @@ vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
 -- Highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
     group = augroup("highlight_yank"),
+    desc = "Highlight selection on yank",
     callback = function()
-        (vim.hl or vim.highlight).on_yank()
+        (vim.hl or vim.highlight).on_yank({ higroup = "IncSearch" })
     end,
 })
 
@@ -123,16 +124,6 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
         end
         local file = vim.uv.fs_realpath(event.match) or event.match
         vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
-    end,
-})
-
--- Highlight on yank
-vim.api.nvim_create_autocmd("TextYankPost", {
-    group = vim.api.nvim_create_augroup("highlight_yank", {}),
-    desc = "Hightlight selection on yank",
-    pattern = "*",
-    callback = function()
-        vim.hl.on_yank({ higroup = "IncSearch" })
     end,
 })
 
